@@ -1,0 +1,413 @@
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { rupiahFormat } from "../../../../Context/__rupiahFormat";
+import { createDeposit } from "../../../../features/deposits/depositSlice";
+import { fetchPayments } from "../../../../features/payments/paymentSlice";
+import { fetchCurrent } from "../../../../features/wallets/walletSlice";
+import useIsMobile from "../../../../Context/__useIsMobile";
+import RupiahInput from "../../Components/rupiahInput";
+
+export const DepositForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const payments = useSelector((state) => state.payments.payments || []);
+  const wallets = useSelector((state) => state.wallets.currentWallets || []);
+  const totalPagesWallet = useSelector(
+    (state) => state.wallets.totalPagesFilter
+  );
+  const totalPages = useSelector((state) => state.payments.totalPages);
+  const status = useSelector((state) => state.payments.status);
+  const isMobile = useIsMobile();
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPageWallet, setCurrentPageWallet] = useState(1);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [noMoreData, setNoMoreData] = useState(false);
+  const [amount, setAmount] = useState(""); // Store raw number
+  const [selectedWallet, setSelectedWallet] = useState(null);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
+  const scrollContainerRef = useRef(null);
+
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchPayments({ page: currentPage, perPage: 10 }))
+        .unwrap()
+        .catch(() => toast.error("Failed to fetch payment methods."));
+    }
+    window.scrollTo(0, 0);
+  }, [dispatch, status, currentPage]);
+
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(
+        fetchCurrent({ pageFilter: currentPageWallet, perPageFilter: 10 })
+      )
+        .unwrap()
+        .catch(() => toast.error("Failed to fetch wallets."));
+    }
+  }, [dispatch, status, currentPageWallet]);
+
+  const handleLoadMoreWallet = useCallback(() => {
+    if (currentPageWallet < totalPagesWallet && !isLoadingMore) {
+      setIsLoadingMore(true);
+      dispatch(
+        fetchCurrent({ pageFilter: currentPageWallet + 1, perPageFilter: 10 })
+      )
+        .unwrap()
+        .then(() => {
+          setIsLoadingMore(false);
+          if (currentPageWallet + 1 >= totalPagesWallet) {
+            setNoMoreData(true);
+          }
+          setCurrentPageWallet((prevPage) => prevPage + 1);
+        })
+        .catch(() => {
+          setIsLoadingMore(false);
+          toast.error("Failed to load more wallets.");
+        });
+    }
+  }, [dispatch, currentPageWallet, totalPagesWallet, isLoadingMore]);
+
+  const handleLoadMore = useCallback(() => {
+    if (currentPage < totalPages && !isLoadingMore) {
+      setIsLoadingMore(true);
+      dispatch(fetchPayments({ page: currentPage + 1, perPage: 10 }))
+        .unwrap()
+        .then(() => {
+          setIsLoadingMore(false);
+          if (currentPage + 1 >= totalPages) {
+            setNoMoreData(true);
+          }
+          setCurrentPage((prevPage) => prevPage + 1);
+        })
+        .catch(() => {
+          setIsLoadingMore(false);
+          toast.error("Failed to load more payment methods.");
+        });
+    }
+  }, [dispatch, currentPage, totalPages, isLoadingMore]);
+
+  const onScroll = useCallback(() => {
+    if (scrollContainerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } =
+        scrollContainerRef.current;
+      if (
+        scrollHeight - scrollTop <= clientHeight + 50 &&
+        !isLoadingMore &&
+        !noMoreData
+      ) {
+        handleLoadMore();
+      }
+    }
+  }, [handleLoadMore, isLoadingMore, noMoreData]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      if (!amount || !selectedPaymentMethod || !selectedWallet) {
+        toast.error("Please fill in all required fields.");
+        return;
+      }
+      const depositData = {
+        amount: parseInt(amount.replace(/[^0-9]/g, "")), // Use raw number for submission
+        payment_id: selectedPaymentMethod.id,
+        wallet_id: selectedWallet.id,
+      };
+
+      dispatch(createDeposit(depositData))
+        .unwrap()
+        .then((response) => {
+          toast.success("Deposit created successfully.");
+          setAmount("");
+          setSelectedPaymentMethod(null);
+          setSelectedWallet(null);
+          navigate(`/deposit/preview/${response.key}`);
+        })
+        .catch(() => toast.error("Failed to create deposit."));
+    } catch (error) {
+      toast.error("Failed to create deposit.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const uniquePayments = {};
+  const visiblePayments = payments.filter((method) => {
+    if (method.status && !uniquePayments[method.id]) {
+      uniquePayments[method.id] = true;
+      return true;
+    }
+    return false;
+  });
+
+  const uniqueWallets = {};
+  const visibleWallets = wallets.filter((wallet) => {
+    if (wallet.status && !uniqueWallets[wallet.id]) {
+      uniqueWallets[wallet.id] = true;
+      return true;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    if (wallets.length > 0 && !selectedWallet) {
+      setSelectedWallet(wallets[0]);
+    }
+  }, [wallets, selectedWallet]);
+
+  return (
+    <div className="">
+      <form className="p-2" onSubmit={handleSubmit}>
+        <div className="md:flex  items-start gap-4">
+          <div className="md:w-2/3">
+            {!isMobile && (
+              <div className="divider text-neutral">Transaction</div>
+            )}
+            <div className="md:flex items-center place-content-center gap-4">
+              {selectedWallet ? (
+                <div className="md:w-5/12">
+                  <div className="flex justify-between items-center px-2 border duration-500 ease-in-out rounded-xl border-base-300 focus:bg-base-100 ring-2 ring-cyan-500 cursor-pointer hover:brightness-90 outline-none font-bold text-pretty py-4 w-full text-center">
+                    <div className="flex justify-start items-start gap-2">
+                      <span
+                        className={`text-cyan-700 text-4xl material-symbols-outlined`}>
+                        wallet
+                      </span>
+                      <div className="text-start">
+                        <h1 className="font-medium">
+                          {selectedWallet.account_name}
+                        </h1>
+                        <h1 className="font-medium text-neutral text-sm">
+                          {selectedWallet.account_number}
+                        </h1>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <h1 className="font-medium">
+                        {rupiahFormat(selectedWallet.balance)}
+                      </h1>
+                      <div className="flex items-center gap-2">
+                        <div className="bg-base-100 p-3">
+                          <span className="md:text-xl text-sm material-symbols-outlined">
+                            check_circle
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="md:w-5/12">
+                  <div className="divider text-neutral cursor-pointer">
+                    {"You don't have a wallet"}
+                  </div>
+                </div>
+              )}
+              <div className="md:w-fit flex justify-center">
+                <div className="divider text-neutral cursor-pointer">
+                  <span className="material-symbols-outlined text-cyan-500">
+                    sync
+                  </span>
+                </div>
+              </div>
+              {selectedPaymentMethod ? (
+                <div className="md:w-5/12">
+                  <div className="flex justify-between items-center px-2 border duration-500 ease-in-out rounded-xl border-base-300 focus:bg-base-100 ring-2 ring-cyan-500 cursor-pointer hover:brightness-90 outline-none font-bold text-pretty py-4 w-full text-center">
+                    <div className="flex justify-start items-start gap-2">
+                      <span
+                        className={`text-cyan-700 text-4xl material-symbols-outlined`}>
+                        wallet
+                      </span>
+                      <div className="text-start">
+                        <h1 className="font-medium">
+                          {selectedPaymentMethod.title}
+                        </h1>
+                        <h1 className="font-medium text-neutral text-sm">
+                          {selectedPaymentMethod.body}
+                        </h1>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="bg-base-100 p-3">
+                        <span className="md:text-xl text-sm material-symbols-outlined">
+                          check_circle
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="md:w-5/12">
+                  <div className="divider text-neutral cursor-pointer">
+                    (Chose Payment Method)
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="divider text-neutral mt-10">
+              <span
+                className={`text-cyan-700 text-4xl material-symbols-outlined`}>
+                switch_access_shortcut
+              </span>
+              <p className="text-warning">Transaction</p>
+              <span
+                className={`text-cyan-700 rotate-180 text-4xl material-symbols-outlined`}>
+                switch_access_shortcut
+              </span>
+            </div>
+
+            <div className="flex justify-center w-full gap-1">
+              <RupiahInput
+                initialValue={amount}
+                onChange={(value) => setAmount(value)}
+              />
+            </div>
+            <div className="flex justify-center mt-10">
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn bg-green-700 btn-success w-11/12 md:w-1/3 mt-4">
+                {loading ? "Loading..." : "Submit"}
+              </button>
+            </div>
+          </div>
+          <div className="md:w-1/3 h-[78vh] overflow-y-auto">
+            {!isMobile && visibleWallets.length >= 1 && (
+              <>
+                <div className="divider">Your Bank</div>
+                <div
+                  ref={scrollContainerRef}
+                  onScroll={onScroll}
+                  style={{
+                    height: visibleWallets.length >= 2 ? "300px" : "100px",
+                    overflowY: "auto",
+                  }} // Set height and overflow for scroll
+                >
+                  {visibleWallets.length === 0 && status !== "loading" ? (
+                    <p>No Wallet available</p>
+                  ) : (
+                    visibleWallets.map((wallet) => (
+                      <div
+                        key={wallet.id}
+                        onClick={() => setSelectedWallet(wallet)}
+                        className={`flex mb-2 justify-between items-center border cursor-pointer hover:bg-base-300/45 p-2 ${
+                          selectedWallet?.id === wallet.id
+                            ? "border-cyan-700"
+                            : "border-base-300"
+                        } ${isMobile && "text-sm"}`}>
+                        <div className="flex justify-start items-start gap-2">
+                          <span
+                            className={`${
+                              selectedWallet?.id === wallet.id
+                                ? "text-cyan-700"
+                                : "text-base-300"
+                            } text-4xl material-symbols-outlined`}>
+                            wallet
+                          </span>
+                          <div>
+                            <h1 className="font-medium">
+                              {wallet.account_name}
+                            </h1>
+                            <h1 className="font-medium text-neutral text-sm">
+                              {wallet.account_number}
+                            </h1>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <h1 className={`font-medium whitespace-nowrap`}>
+                            {rupiahFormat(wallet.balance)}
+                          </h1>
+                          <button className="btn btn-sm md:btn-md bg-base-300/50">
+                            <span className="md:text-xl text-sm material-symbols-outlined">
+                              {selectedWallet?.id === wallet.id
+                                ? "check_circle"
+                                : "select"}
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+                <div
+                  className={`divider text-neutral cursor-pointer ${
+                    isMobile && "text-xs"
+                  }`}
+                  onClick={handleLoadMoreWallet}>
+                  Load more
+                </div>
+              </>
+            )}
+            <div className={`divider ${isMobile && "text-xs"}`}>
+              Chose Payment Method
+            </div>
+            {visiblePayments.length === 0 ? (
+              <p>No Payment Method available</p>
+            ) : (
+              visiblePayments.map((payment) => (
+                <div
+                  key={payment.id}
+                  onClick={() => setSelectedPaymentMethod(payment)}
+                  className={`flex mb-2 justify-between items-center border cursor-pointer hover:bg-base-300/45 p-2 ${
+                    selectedPaymentMethod?.id === payment.id
+                      ? "border-cyan-700"
+                      : "border-base-300"
+                  } ${isMobile && "text-sm"}`}>
+                  <div className="flex justify-start items-start gap-2">
+                    {payment.image ? (
+                      <div className="avatar">
+                        <div className="h-12 w-20 object-contain object-center">
+                          <img
+                            src={`${process.env.REACT_APP_API}payment/images/${payment.image}`}
+                            alt="Avatar"
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      <span
+                        className={`${
+                          selectedPaymentMethod?.id === payment.id
+                            ? "text-cyan-700"
+                            : "text-neutral"
+                        } text-4xl h-12 w-20 text-center bg-base-200/45 material-symbols-outlined`}>
+                        payment
+                      </span>
+                    )}
+
+                    <div>
+                      <h1 className="font-medium">{payment.title}</h1>
+                      <h1 className="font-medium text-neutral text-sm">
+                        {payment.body}
+                      </h1>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button className="btn btn-sm md:btn-md bg-base-300/50">
+                      <span className="md:text-xl text-sm material-symbols-outlined">
+                        {selectedPaymentMethod?.id === payment.id
+                          ? "check_circle"
+                          : "select"}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              ))
+            )}
+
+            <div
+              className={`divider text-neutral cursor-pointer ${
+                isMobile && "text-xs"
+              }`}
+              onClick={handleLoadMore}>
+              Load more
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+};

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <style>
+    .primary { fill: #4A90E2; }
+    .accent { fill: #50E3C2; }
+    .highlight { fill: #F5A623; }
+    .dark { fill: #2C3E50; }
+    .light { fill: #ECF0F1; }
+  </style>
+
+  <!-- Meja -->
+  <rect x="80" y="250" width="440" height="20" class="dark" rx="5"></rect>
+
+  <!-- Laptop -->
+  <rect x="250" y="180" width="100" height="60" class="primary" rx="5"></rect>
+  <rect x="260" y="190" width="80" height="40" class="light" rx="3"></rect>
+  <rect x="245" y="240" width="110" height="10" class="dark" rx="2"></rect>
+
+  <!-- Buku -->
+  <rect x="140" y="210" width="70" height="40" class="highlight" rx="3"></rect>
+  <line x1="175" y1="210" x2="175" y2="250" stroke="#fff" stroke-width="2"></line>
+
+  <!-- Pensil -->
+  <rect x="450" y="210" width="10" height="50" class="accent"></rect>
+  <polygon points="450,210 460,210 455,200" fill="#F5A623"></polygon>
+
+  <!-- Lampu belajar -->
+  <line x1="350" y1="140" x2="400" y2="180" stroke="#2C3E50" stroke-width="3"></line>
+  <circle cx="350" cy="140" r="15" class="highlight"></circle>
+</svg>

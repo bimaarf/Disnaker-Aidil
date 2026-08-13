@@ -1,0 +1,17 @@
+[data-theme="wireframe"] input {
+  border-color: #e6edf3;
+  outline: none; /* hilangkan outline default browser */
+}
+
+[data-theme="black"] input {
+  border-color: #1A1A1D;
+  outline: none;
+}
+
+[data-theme="wireframe"] input:focus {
+  outline: none;
+}
+
+[data-theme="black"] input:focus {
+  outline: none;
+}

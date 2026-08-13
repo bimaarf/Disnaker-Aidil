@@ -1,0 +1,12 @@
+{
+  "env": {
+    "browser": true, // Ensure the browser environment is recognized
+    "serviceworker": true // Ensure the service worker environment is recognized
+  },
+  "globals": {
+    "self": "readonly" // Allow the use of `self` in service workers
+  },
+  "rules": {
+    // Add or override specific rules if needed
+  }
+}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="wireframe">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- SEO Meta -->
+    <title>Enggang Foundation</title>
+    <meta
+      name="description"
+      content="Enggang Foundation. Pendidikan berkualitas dan pengembangan karakter siswa." />
+    <meta
+      name="keywords"
+      content="Enggang Foundation, pendidikan, sekolah, pendidikan islam, pembelajaran" />
+    <meta name="author" content="Enggang Foundation" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://enggangfoundation.id" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="https://enggangfoundation.id/api-yz-v1/logo/images/logo.png"
+      type="image/png" />
+    <link
+      rel="apple-touch-icon"
+      href="https://enggangfoundation.id/api-yz-v1/logo/images/logo.png" />
+    <link
+      rel="shortcut icon"
+      href="https://enggangfoundation.id/api-yz-v1/logo/images/logo.png"
+      type="image/x-icon" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Enggang Foundation" />
+    <meta
+      property="og:description"
+      content="Pendidikan berkualitas dan pengembangan karakter siswa dengan Enggang Foundation." />
+    <meta property="og:url" content="https://enggangfoundation.id" />
+    <meta
+      property="og:image"
+      content="https://enggangfoundation.id/api-yz-v1/logo/images/logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Enggang Foundation" />
+    <meta
+      name="twitter:description"
+      content="Pendidikan berkualitas dan pengembangan karakter siswa dengan Enggang Foundation." />
+    <meta
+      name="twitter:image"
+      content="https://enggangfoundation.id/api-yz-v1/logo/images/logo.png" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Sofia&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined"
+      rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN minified + DaisyUI plugin -->
+    <script src="https://cdn.tailwindcss.com?plugins=daisyui" defer></script>
+    <script>
+      tailwind.config = {
+        plugins: [require("daisyui")],
+        daisyui: {
+          themes: [
+            {
+              wireframe: {
+                primary: "#3B82F6",
+                "primary-content": "#FFFFFF",
+                secondary: "#2563EB",
+                "secondary-content": "#FFFFFF",
+                accent: "#EC4899",
+                "accent-content": "#FFFFFF",
+                neutral: "#6B7280",
+                "neutral-content": "#FFFFFF",
+                "base-100": "#ffffff",
+                "base-200": "#f9fafb",
+                "base-300": "#e6edf3",
+                "base-content": "#1f2937",
+                info: "#60A5FA",
+                "info-content": "#FFFFFF",
+                success: "#10B981",
+                "success-content": "#FFFFFF",
+                warning: "#F59E0B",
+                "warning-content": "#FFFFFF",
+                error: "#EF4444",
+                "error-content": "#FFFFFF",
+              },
+            },
+            {
+              black: {
+                primary: "#4F46E5",
+                "primary-content": "#FFFFFF",
+                secondary: "#4338CA",
+                "secondary-content": "#FFFFFF",
+                accent: "#F472B6",
+                "accent-content": "#FFFFFF",
+                neutral: "#6B7280",
+                "neutral-content": "#FFFFFF",
+                "base-100": "#0a0a0a",
+                "base-200": "#121214",
+                "base-300": "#1A1A1D",
+                "base-content": "#FFFFFF",
+                info: "#3B82F6",
+                "info-content": "#FFFFFF",
+                success: "#059669",
+                "success-content": "#FFFFFF",
+                warning: "#D97706",
+                "warning-content": "#FFFFFF",
+                error: "#DC2626",
+                "error-content": "#FFFFFF",
+              },
+            },
+          ],
+        },
+      };
+    </script>
+
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: var(--font-business);
+        font-weight: 400;
+        scrollbar-width: thin;
+        scrollbar-color: var(--b3) var(--b1);
+        background-color: var(--base-100);
+      }
+      #app {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .tawk-widget {
+        position: fixed !important;
+        bottom: 150px !important;
+        right: 200px !important;
+        z-index: 9999 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <noscript>You need to enable JavaScript to run this app.</noscript>
+      <div id="root"></div>
+    </div>
+
+    <!-- Lazy load LiveChat -->
+    <script defer>
+      window.__lc = window.__lc || {};
+      window.__lc.license = 19305192;
+
+      (function (n, t, c) {
+        function i(n) {
+          return e._h ? e._h.apply(null, n) : e._q.push(n);
+        }
+        var e = {
+          _q: [],
+          _h: null,
+          _v: "2.0",
+          on: function () {
+            i(["on", c.call(arguments)]);
+          },
+          once: function () {
+            i(["once", c.call(arguments)]);
+          },
+          off: function () {
+            i(["off", c.call(arguments)]);
+          },
+          get: function () {
+            if (!e._h)
+              throw new Error(
+                "[LiveChatWidget] You can't use getters before load."
+              );
+            return i(["get", c.call(arguments)]);
+          },
+          call: function () {
+            i(["call", c.call(arguments)]);
+          },
+          init: function () {
+            var n = t.createElement("script");
+            (n.async = !0),
+              (n.type = "text/javascript"),
+              (n.src = "https://cdn.livechatinc.com/tracking.js"),
+              t.head.appendChild(n);
+          },
+        };
+        !n.__lc.asyncInit && e.init(),
+          (n.LiveChatWidget = n.LiveChatWidget || e);
+      })(window, document, [].slice);
+
+      window.LiveChatWidget = window.LiveChatWidget || {};
+      window.LiveChatWidget.on("ready", function () {
+        window.LiveChatWidget.call("maximize");
+      });
+      window.LiveChatWidget.on("visibility_changed", function (data) {
+        console.log("LiveChat visibility changed:", data);
+      });
+      window.LiveChatWidget.on("new_event", function (event) {
+        if (event.type === "message") {
+          console.log("New message received:", event);
+        }
+      });
+    </script>
+  </body>
+</html>

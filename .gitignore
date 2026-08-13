@@ -1,0 +1,22 @@
+
+# Large/local binaries
+/frontend/tailwindcss
+/frontend/vendor/
+/frontend/node_modules/
+/frontend/build/
+/backend/vendor/
+/backend/node_modules/
+# Frontend
+/frontend/node_modules/
+/frontend/vendor/
+/frontend/build/
+/frontend/tailwindcss
+
+# Backend
+/backend/node_modules/
+/backend/vendor/
+
+# Environment
+.env
+.env.*
+!.env.example

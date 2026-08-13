@@ -1,0 +1,109 @@
+:root {
+  /* Dark mode variables */
+  --form-bg-dark: transparent; /* Diubah menjadi transparan */
+  --label-bg-dark: #333;
+  --border-color-dark: #666;
+  --svg-fill-dark: #666;
+  --text-color-dark: #eee;
+  --button-bg-dark: #666;
+  --button-hover-dark: #888;
+  --shadow-dark: rgba(0, 0, 0, 0.5);
+
+  /* Light mode variables */
+  --form-bg-light: transparent; /* Diubah menjadi transparan */
+  --label-bg-light: #ffffff;
+  --border-color-light: #ccc;
+  --svg-fill-light: #888;
+  --text-color-light: #333;
+  --button-bg-light: #ddd;
+  --button-hover-light: #bbb;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+.file-upload-form {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--form-bg-dark); /* Transparan di dark mode */
+  transition: background-color 0.3s ease;
+}
+.file-upload-form:hover {
+  filter: brightness(90%);
+  transition: filter 0.3s ease;
+}
+
+/* Light mode */
+.wireframe .file-upload-form {
+  background-color: var(--form-bg-light); /* Transparan di light mode */
+}
+
+.file-upload-label input {
+  display: none;
+}
+
+.file-upload-label svg {
+  height: 30px; /* Dikurangi dari 50px */
+  fill: var(--svg-fill-dark);
+  margin-bottom: 10px; /* Dikurangi dari 20px */
+  transition: fill 0.3s ease;
+}
+
+/* Light mode SVG */
+.wireframe .file-upload-label svg {
+  fill: var(--svg-fill-light);
+}
+
+.file-upload-label {
+  cursor: pointer;
+  background-color: var(--label-bg-dark);
+  padding: 20px 50px; /* Dikurangi dari 30px 70px */
+  border-radius: 30px; /* Dikurangi dari 40px */
+  border: 2px dashed var(--border-color-dark);
+  box-shadow: 0px 0px 100px -25px var(--shadow-dark); /* Shadow diperkecil */
+  color: var(--text-color-dark);
+  transition: all 0.3s ease;
+}
+
+/* Light mode label */
+.wireframe .file-upload-label {
+  background-color: var(--label-bg-light);
+  border-color: var(--border-color-light);
+  box-shadow: 0px 0px 100px -25px var(--shadow-light);
+  color: var(--text-color-light);
+}
+
+.file-upload-design {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px; /* Dikurangi dari 5px */
+}
+
+.browse-button {
+  background-color: var(--button-bg-dark);
+  padding: 3px 10px; /* Dikurangi dari 5px 15px */
+  border-radius: 8px; /* Dikurangi dari 10px */
+  color: var(--text-color-dark); /* Perbaikan typo dari "DARK" */
+  transition: all 0.3s ease;
+  font-size: 0.9em; /* Ditambahkan untuk memperkecil teks */
+}
+
+/* Light mode button */
+.wireframe .browse-button {
+  background-color: var(--button-bg-light);
+  color: var(--text-color-light);
+}
+
+.browse-button:hover {
+  background-color: var(--button-hover-dark);
+  color: #fff;
+}
+
+/* Light mode button hover */
+.wireframe .browse-button:hover {
+  background-color: var(--button-hover-light);
+  color: #000;
+}

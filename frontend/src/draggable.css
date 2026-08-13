@@ -1,0 +1,323 @@
+/* draggable.css */
+.draggable-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  position: relative;
+  transform-origin: center;
+}
+
+.draggable-item.dragging {
+  z-index: 1000;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  opacity: 0.8;
+  transform: rotate(2deg) scale(1.02);
+}
+
+.draggable-item.hovered {
+ 
+  border-color: #3b82f6 !important;
+}
+
+.drag-handle {
+  touch-action: none;
+  transition: all 0.2s ease;
+  cursor: grab;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+.drag-handle:hover {
+  color: #3b82f6 !important;
+}
+
+/* Improved hover effects */
+.draggable-item:hover .drag-handle {
+  opacity: 1;
+}
+
+.draggable-item .drag-handle {
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+/* Prevent text selection during drag */
+.draggable-item * {
+  user-select: none;
+}
+
+/* Ensure drag handle is always clickable */
+.drag-handle,
+.drag-handle * {
+  pointer-events: auto !important;
+}
+
+/* Custom scrollbar for better UX */
+/* .scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} */
+
+/* Smooth transitions for all draggable elements */
+.draggable-item > * {
+  transition: all 0.2s ease;
+}
+
+/* Animation for drag preview */
+
+/* 
+.draggable-item:hover {
+  animation: dragPulse 2s ease-in-out infinite;
+} */
+
+/* Drop zone styling */
+.drop-zone {
+  border: 2px dashed #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.drop-zone.active {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: #2563eb;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .draggable-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+
+  .draggable-item.dragging {
+    transform: scale(1.01);
+    rotate: 1deg;
+  }
+
+  .drag-handle {
+    padding: 0.75rem;
+  }
+
+  .drag-handle span {
+    font-size: 1.5rem;
+  }
+
+  /* Larger touch targets for mobile */
+  .drag-handle {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Focus states for accessibility */
+.drag-handle:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Loading states */
+.draggable-item.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.draggable-item.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #3b82f6;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success state */
+.draggable-item.success {
+  border-color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.draggable-item.success::before {
+  content: "✓";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #10b981;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* Error state */
+.draggable-item.error {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.draggable-item.error::before {
+  content: "!";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ef4444;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* Custom cursor styles */
+.cursor-grab {
+  cursor: grab;
+}
+
+.cursor-grabbing {
+  cursor: grabbing;
+}
+
+.cursor-dragging {
+  cursor: move;
+}
+
+/* Z-index management */
+.draggable-item {
+  z-index: 1;
+}
+
+.draggable-item.dragging {
+  z-index: 1000;
+}
+
+/* Ensure dropdowns don't interfere with drag operations */
+.dropdown {
+  z-index: 50;
+}
+
+.dropdown-content {
+  z-index: 100;
+}
+
+/* Smooth transitions for transform properties */
+.draggable-item {
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* Focus within for better accessibility */
+.draggable-item:focus-within {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .draggable-item {
+    border-color: #374151;
+  }
+
+  .draggable-item.dragging {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+ 
+  .drop-zone {
+    border-color: #4b5563;
+    background: rgba(75, 85, 99, 0.1);
+  }
+
+  .drop-zone.active {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: #3b82f6;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .draggable-item,
+  .drag-handle {
+    transition: none;
+  }
+
+  .draggable-item:hover {
+    animation: none;
+  }
+
+  .draggable-item.dragging {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .drag-handle:hover {
+    color: #0000ff !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .drag-handle {
+    display: none !important;
+  }
+
+  .draggable-item {
+    break-inside: avoid;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+}
+
+/* Custom properties for theming */
+:root {
+  --drag-handle-size: 24px;
+  --drag-handle-color: #6b7280;
+  --drag-handle-hover-color: #3b82f6;
+  /* --drag-item-border: 1px solid #e5e7eb; */
+  --drag-item-border-hover: 2px solid #3b82f6;
+  --drag-item-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --drag-item-shadow-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --drag-item-bg: #ffffff;
+  --drag-item-bg-hover: #f9fafb;
+}
+
+.dark {
+  --drag-handle-color: #9ca3af;
+  --drag-handle-hover-color: #60a5fa;
+  /* --drag-item-border: 1px solid #374151; */
+  --drag-item-border-hover: 2px solid #60a5fa;
+  --drag-item-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  --drag-item-shadow-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --drag-item-bg: #1f2937;
+  --drag-item-bg-hover: #374151;
+}
+
+/* Using custom properties */
+.draggable-item {
+  border: var(--drag-item-border);
+  background: var(--drag-item-bg);
+  box-shadow: var(--drag-item-shadow);
+}
+
+
+.drag-handle {
+  color: var(--drag-handle-color);
+}
+
+.drag-handle:hover {
+  color: var(--drag-handle-hover-color) !important;
+}

@@ -1,0 +1,2822 @@
+
+
+
+/* ========================================
+   QUILL CONTENT STYLES
+   ======================================== */
+.quill-content code:not(pre code) {
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Monaco, "Cascadia Code",
+    "Roboto Mono", Consolas, "Courier New", monospace;
+  font-size: 0.875em;
+  font-weight: 500;
+}
+
+[data-theme="wireframe"] .quill-content code:not(pre code) {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="black"] .quill-content code:not(pre code) {
+  background: rgba(79, 70, 229, 0.15);
+  color: #818cf8;
+  border: 1px solid rgba(79, 70, 229, 0.3);
+}
+
+/* Link styles untuk quill-content */
+.quill-content a {
+  text-decoration: underline;
+  transition: color 0.2s ease;
+  text-underline-offset: 2px;
+}
+
+[data-theme="wireframe"] .quill-content a {
+  color: #3b82f6;
+}
+
+[data-theme="wireframe"] .quill-content a:hover {
+  color: #2563eb;
+}
+
+[data-theme="black"] .quill-content a {
+  color: #818cf8;
+}
+
+[data-theme="black"] .quill-content a:hover {
+  color: #a5b4fc;
+}
+
+/* Text formatting untuk quill-content */
+.quill-content strong,
+.quill-content b {
+  font-weight: 600;
+}
+
+[data-theme="wireframe"] .quill-content strong,
+[data-theme="wireframe"] .quill-content b {
+  color: #1f2937;
+}
+
+[data-theme="black"] .quill-content strong,
+[data-theme="black"] .quill-content b {
+  color: #ffffff;
+}
+
+.quill-content em,
+.quill-content i {
+  font-style: italic;
+}
+
+.quill-content u {
+  text-decoration: underline;
+}
+
+.quill-content s,
+.quill-content strike {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Horizontal rule untuk quill-content */
+.quill-content hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  height: 1px;
+}
+
+[data-theme="wireframe"] .quill-content hr {
+  background: #e5e7eb;
+}
+
+[data-theme="black"] .quill-content hr {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   IMAGE FLOAT STYLES FOR QUILL
+   ======================================== */
+
+/* Base image styles untuk editor dan display */
+.ql-editor img,
+.quill-content img,
+.custom-quill .ql-editor img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 1rem auto !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Image hover effect */
+.ql-editor img:hover,
+.quill-content img:hover,
+.custom-quill .ql-editor img:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Float left untuk editor dan display */
+.ql-editor .ql-align-left,
+.ql-editor img.ql-align-left,
+.custom-quill .ql-editor .ql-align-left,
+.custom-quill .ql-editor img.ql-align-left,
+.quill-content .ql-align-left,
+.quill-content img.ql-align-left,
+.quill-content p img.ql-align-left,
+.quill-content div img.ql-align-left {
+  float: left !important;
+  margin: 0.5rem 1.5rem 1rem 0 !important;
+  clear: left !important;
+  display: block !important;
+  max-width: 50% !important;
+}
+
+/* Float right untuk editor dan display */
+.ql-editor .ql-align-right,
+.ql-editor img.ql-align-right,
+.custom-quill .ql-editor .ql-align-right,
+.custom-quill .ql-editor img.ql-align-right,
+.quill-content .ql-align-right,
+.quill-content img.ql-align-right,
+.quill-content p img.ql-align-right,
+.quill-content div img.ql-align-right {
+  float: right !important;
+  margin: 0.5rem 0 1rem 1.5rem !important;
+  clear: right !important;
+  display: block !important;
+  max-width: 50% !important;
+}
+
+/* Center untuk editor dan display */
+.ql-editor .ql-align-center,
+.ql-editor img.ql-align-center,
+.custom-quill .ql-editor .ql-align-center,
+.custom-quill .ql-editor img.ql-align-center,
+.quill-content .ql-align-center,
+.quill-content img.ql-align-center,
+.quill-content p img.ql-align-center,
+.quill-content div img.ql-align-center {
+  float: none !important;
+  display: block !important;
+  margin: 1rem auto !important;
+  clear: both !important;
+  max-width: 100% !important;
+}
+
+/* Justify/Default untuk editor dan display */
+.ql-editor .ql-align-justify,
+.ql-editor img.ql-align-justify,
+.custom-quill .ql-editor .ql-align-justify,
+.custom-quill .ql-editor img.ql-align-justify,
+.quill-content .ql-align-justify,
+.quill-content img.ql-align-justify,
+.quill-content p img.ql-align-justify,
+.quill-content div img.ql-align-justify {
+  float: none !important;
+  display: block !important;
+  margin: 1rem auto !important;
+  clear: both !important;
+  max-width: 100% !important;
+}
+
+/* Maintain float when image has resize handles */
+.ql-editor .ql-image-resizing.ql-align-left,
+.custom-quill .ql-editor .ql-image-resizing.ql-align-left {
+  float: left !important;
+  margin: 0.5rem 1.5rem 1rem 0 !important;
+}
+
+.ql-editor .ql-image-resizing.ql-align-right,
+.custom-quill .ql-editor .ql-image-resizing.ql-align-right {
+  float: right !important;
+  margin: 0.5rem 0 1rem 1.5rem !important;
+}
+
+.ql-editor .ql-image-resizing.ql-align-center,
+.custom-quill .ql-editor .ql-image-resizing.ql-align-center {
+  float: none !important;
+  display: block !important;
+  margin: 1rem auto !important;
+}
+
+/* Video and iframe float styles */
+.ql-editor video.ql-align-left,
+.quill-content video.ql-align-left,
+.custom-quill .ql-editor video.ql-align-left,
+.ql-editor iframe.ql-align-left,
+.quill-content iframe.ql-align-left,
+.custom-quill .ql-editor iframe.ql-align-left {
+  float: left !important;
+  margin: 0.5rem 1.5rem 1rem 0 !important;
+  max-width: 50% !important;
+}
+
+.ql-editor video.ql-align-right,
+.quill-content video.ql-align-right,
+.custom-quill .ql-editor video.ql-align-right,
+.ql-editor iframe.ql-align-right,
+.quill-content iframe.ql-align-right,
+.custom-quill .ql-editor iframe.ql-align-right {
+  float: right !important;
+  margin: 0.5rem 0 1rem 1.5rem !important;
+  max-width: 50% !important;
+}
+
+.ql-editor video.ql-align-center,
+.quill-content video.ql-align-center,
+.custom-quill .ql-editor video.ql-align-center,
+.ql-editor iframe.ql-align-center,
+.quill-content iframe.ql-align-center,
+.custom-quill .ql-editor iframe.ql-align-center {
+  float: none !important;
+  display: block !important;
+  margin: 1rem auto !important;
+  max-width: 100% !important;
+}
+
+/* Clearfix untuk containers */
+.ql-editor::after,
+.quill-content::after,
+.custom-quill .ql-editor::after,
+.ql-editor p::after,
+.quill-content p::after,
+.custom-quill .ql-editor p::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Table styles untuk quill-content */
+.quill-content table {
+  width: 100%;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-collapse: collapse;
+}
+
+.quill-content th,
+.quill-content td {
+  padding: 0.5rem;
+  text-align: left;
+}
+
+[data-theme="wireframe"] .quill-content th {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+[data-theme="wireframe"] .quill-content td {
+  border: 1px solid #e5e7eb;
+}
+
+[data-theme="black"] .quill-content th {
+  background: #1a1a1d;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  color: #ffffff;
+}
+
+[data-theme="black"] .quill-content td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   CUSTOM QUILL THEME STYLES (Enhanced)
+   ======================================== */
+
+/* Base custom-quill styling */
+.custom-quill {
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+/* Wireframe theme (light) */
+[data-theme="wireframe"] .custom-quill .ql-toolbar {
+  border: 1px solid #e5e7eb;
+  border-bottom: none;
+  border-radius: 1rem 1rem 0 0;
+  background: #f9fafb;
+  padding: 8px;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-container {
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  border-radius: 0 0 1rem 1rem;
+  background: #ffffff;
+  font-family: inherit;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-editor {
+  color: #1f2937;
+  background: #ffffff;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-editor.ql-blank::before {
+  color: rgba(31, 41, 55, 0.4);
+}
+
+/* Dark theme */
+[data-theme="dark"] .custom-quill .ql-toolbar,
+.dark .custom-quill .ql-toolbar {
+  border: 1px solid #374151;
+  border-bottom: none;
+  border-radius: 1rem 1rem 0 0;
+  background: #1a1a1d;
+  padding: 8px;
+}
+
+[data-theme="dark"] .custom-quill .ql-container,
+.dark .custom-quill .ql-container {
+  border: 1px solid #374151;
+  border-top: none;
+  border-radius: 0 0 1rem 1rem;
+  background: #1a1a1d;
+  font-family: inherit;
+}
+
+[data-theme="dark"] .custom-quill .ql-editor,
+.dark .custom-quill .ql-editor {
+  color: #f9fafb;
+  background: #1a1a1d;
+}
+
+[data-theme="dark"] .custom-quill .ql-editor.ql-blank::before,
+.dark .custom-quill .ql-editor.ql-blank::before {
+  color: rgba(249, 250, 251, 0.4);
+}
+
+/* Black theme (dark) */
+[data-theme="black"] .custom-quill .ql-toolbar {
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-bottom: none;
+  border-radius: 1rem 1rem 0 0;
+  background: #1a1a1d;
+  padding: 8px;
+}
+
+[data-theme="black"] .custom-quill .ql-container {
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-top: none;
+  border-radius: 0 0 1rem 1rem;
+  background: #1a1a1d;
+  font-family: inherit;
+}
+
+[data-theme="black"] .custom-quill .ql-editor {
+  color: rgba(255, 255, 255, 0.9);
+  background: #0a0a0a;
+}
+
+[data-theme="black"] .custom-quill .ql-editor.ql-blank::before {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Editor content area untuk custom-quill */
+.custom-quill .ql-editor {
+  min-height: 120px;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  background: transparent;
+  font-family: inherit;
+}
+
+/* Focus states untuk custom-quill */
+[data-theme="wireframe"] .custom-quill.focus-within .ql-toolbar,
+[data-theme="wireframe"] .custom-quill.focus-within .ql-container,
+[data-theme="wireframe"] .custom-quill:focus-within .ql-toolbar,
+[data-theme="wireframe"] .custom-quill:focus-within .ql-container {
+  border-color: #3b82f6;
+  transition: border-color 0.2s ease;
+}
+
+[data-theme="dark"] .custom-quill.focus-within .ql-toolbar,
+[data-theme="dark"] .custom-quill.focus-within .ql-container,
+[data-theme="dark"] .custom-quill:focus-within .ql-toolbar,
+[data-theme="dark"] .custom-quill:focus-within .ql-container,
+.dark .custom-quill.focus-within .ql-toolbar,
+.dark .custom-quill.focus-within .ql-container,
+.dark .custom-quill:focus-within .ql-toolbar,
+.dark .custom-quill:focus-within .ql-container {
+  border-color: #60a5fa;
+  transition: border-color 0.2s ease;
+}
+
+[data-theme="black"] .custom-quill.focus-within .ql-toolbar,
+[data-theme="black"] .custom-quill.focus-within .ql-container,
+[data-theme="black"] .custom-quill:focus-within .ql-toolbar,
+[data-theme="black"] .custom-quill:focus-within .ql-container {
+  border-color: #4f46e5;
+  transition: border-color 0.2s ease;
+}
+
+/* Error states untuk custom-quill */
+[data-theme="wireframe"] .custom-quill.error .ql-toolbar,
+[data-theme="wireframe"] .custom-quill.error .ql-container {
+  border-color: #ef4444;
+}
+
+[data-theme="dark"] .custom-quill.error .ql-toolbar,
+[data-theme="dark"] .custom-quill.error .ql-container,
+.dark .custom-quill.error .ql-toolbar,
+.dark .custom-quill.error .ql-container {
+  border-color: #f87171;
+}
+
+[data-theme="black"] .custom-quill.error .ql-toolbar,
+[data-theme="black"] .custom-quill.error .ql-container {
+  border-color: #dc2626;
+}
+
+/* Toolbar button styles untuk custom-quill */
+.custom-quill .ql-toolbar button {
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  padding: 4px;
+  margin: 1px;
+  min-width: 28px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+}
+
+/* Wireframe theme buttons */
+[data-theme="wireframe"] .custom-quill .ql-toolbar button {
+  color: rgba(31, 41, 55, 0.8) !important;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-toolbar button:hover {
+  color: #3b82f6 !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-toolbar button.ql-active {
+  color: #3b82f6 !important;
+  background: rgba(59, 130, 246, 0.15) !important;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Dark theme buttons */
+[data-theme="dark"] .custom-quill .ql-toolbar button,
+.dark .custom-quill .ql-toolbar button {
+  color: rgba(249, 250, 251, 0.8) !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-toolbar button:hover,
+.dark .custom-quill .ql-toolbar button:hover {
+  color: #60a5fa !important;
+  background: rgba(96, 165, 250, 0.1) !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-toolbar button.ql-active,
+.dark .custom-quill .ql-toolbar button.ql-active {
+  color: #60a5fa !important;
+  background: rgba(96, 165, 250, 0.15) !important;
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+/* Black theme buttons */
+[data-theme="black"] .custom-quill .ql-toolbar button {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="black"] .custom-quill .ql-toolbar button:hover {
+  color: #4f46e5 !important;
+  background: rgba(79, 70, 229, 0.1) !important;
+}
+
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-active {
+  color: #4f46e5 !important;
+  background: rgba(79, 70, 229, 0.15) !important;
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+/* Icon styles for all toolbar elements */
+.custom-quill .ql-toolbar .ql-stroke {
+  stroke: currentColor !important;
+}
+
+.custom-quill .ql-toolbar .ql-fill {
+  fill: currentColor !important;
+}
+
+.custom-quill .ql-toolbar .ql-stroke.ql-fill {
+  fill: currentColor !important;
+  stroke: none !important;
+}
+
+/* Dropdown picker styles untuk custom-quill */
+.custom-quill .ql-toolbar .ql-picker-label {
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+/* Wireframe dropdown */
+[data-theme="wireframe"] .custom-quill .ql-toolbar .ql-picker-label {
+  color: rgba(31, 41, 55, 0.8) !important;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-toolbar .ql-picker-label:hover {
+  color: #3b82f6 !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+}
+
+[data-theme="wireframe"]
+  .custom-quill
+  .ql-toolbar
+  .ql-picker.ql-expanded
+  .ql-picker-label {
+  color: #3b82f6 !important;
+  background: rgba(59, 130, 246, 0.15) !important;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Dark dropdown */
+[data-theme="dark"] .custom-quill .ql-toolbar .ql-picker-label,
+.dark .custom-quill .ql-toolbar .ql-picker-label {
+  color: rgba(249, 250, 251, 0.8) !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-toolbar .ql-picker-label:hover,
+.dark .custom-quill .ql-toolbar .ql-picker-label:hover {
+  color: #60a5fa !important;
+  background: rgba(96, 165, 250, 0.1) !important;
+}
+
+[data-theme="dark"]
+  .custom-quill
+  .ql-toolbar
+  .ql-picker.ql-expanded
+  .ql-picker-label,
+.dark .custom-quill .ql-toolbar .ql-picker.ql-expanded .ql-picker-label {
+  color: #60a5fa !important;
+  background: rgba(96, 165, 250, 0.15) !important;
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+/* Black dropdown */
+[data-theme="black"] .custom-quill .ql-toolbar .ql-picker-label {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="black"] .custom-quill .ql-toolbar .ql-picker-label:hover {
+  color: #4f46e5 !important;
+  background: rgba(79, 70, 229, 0.1) !important;
+}
+
+[data-theme="black"]
+  .custom-quill
+  .ql-toolbar
+  .ql-picker.ql-expanded
+  .ql-picker-label {
+  color: #4f46e5 !important;
+  background: rgba(79, 70, 229, 0.15) !important;
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+/* Dropdown options untuk custom-quill */
+[data-theme="wireframe"] .custom-quill .ql-toolbar .ql-picker-options {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 4px;
+}
+
+[data-theme="dark"] .custom-quill .ql-toolbar .ql-picker-options,
+.dark .custom-quill .ql-toolbar .ql-picker-options {
+  background: #1f2937 !important;
+  border: 1px solid #374151;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  padding: 4px;
+}
+
+[data-theme="black"] .custom-quill .ql-toolbar .ql-picker-options {
+  background: #121214 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  padding: 4px;
+}
+
+.custom-quill .ql-toolbar .ql-picker-item {
+  padding: 8px 12px;
+  border-radius: 0.5rem;
+  margin: 2px;
+}
+
+/* Wireframe picker items */
+[data-theme="wireframe"] .custom-quill .ql-toolbar .ql-picker-item {
+  color: rgba(31, 41, 55, 0.8) !important;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-toolbar .ql-picker-item:hover {
+  background: rgba(59, 130, 246, 0.1) !important;
+  color: #3b82f6 !important;
+}
+
+/* Dark picker items */
+[data-theme="dark"] .custom-quill .ql-toolbar .ql-picker-item,
+.dark .custom-quill .ql-toolbar .ql-picker-item {
+  color: rgba(249, 250, 251, 0.8) !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-toolbar .ql-picker-item:hover,
+.dark .custom-quill .ql-toolbar .ql-picker-item:hover {
+  background: rgba(96, 165, 250, 0.1) !important;
+  color: #60a5fa !important;
+}
+
+/* Black picker items */
+[data-theme="black"] .custom-quill .ql-toolbar .ql-picker-item {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="black"] .custom-quill .ql-toolbar .ql-picker-item:hover {
+  background: rgba(79, 70, 229, 0.1) !important;
+  color: #4f46e5 !important;
+}
+
+/* Toolbar spacing untuk custom-quill */
+.custom-quill .ql-toolbar .ql-formats {
+  margin-right: 8px;
+}
+
+.custom-quill .ql-toolbar .ql-formats:last-child {
+  margin-right: 0;
+}
+
+/* Typography dalam editor */
+.custom-quill .ql-editor h1,
+.custom-quill .ql-editor h2,
+.custom-quill .ql-editor h3,
+.custom-quill .ql-editor h4,
+.custom-quill .ql-editor h5,
+.custom-quill .ql-editor h6 {
+  font-weight: 600;
+  margin: 0.5em 0;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-editor h1,
+[data-theme="wireframe"] .custom-quill .ql-editor h2,
+[data-theme="wireframe"] .custom-quill .ql-editor h3,
+[data-theme="wireframe"] .custom-quill .ql-editor h4,
+[data-theme="wireframe"] .custom-quill .ql-editor h5,
+[data-theme="wireframe"] .custom-quill .ql-editor h6 {
+  color: #111827;
+}
+
+[data-theme="dark"] .custom-quill .ql-editor h1,
+[data-theme="dark"] .custom-quill .ql-editor h2,
+[data-theme="dark"] .custom-quill .ql-editor h3,
+[data-theme="dark"] .custom-quill .ql-editor h4,
+[data-theme="dark"] .custom-quill .ql-editor h5,
+[data-theme="dark"] .custom-quill .ql-editor h6,
+.dark .custom-quill .ql-editor h1,
+.dark .custom-quill .ql-editor h2,
+.dark .custom-quill .ql-editor h3,
+.dark .custom-quill .ql-editor h4,
+.dark .custom-quill .ql-editor h5,
+.dark .custom-quill .ql-editor h6 {
+  color: #f9fafb;
+}
+
+[data-theme="black"] .custom-quill .ql-editor h1,
+[data-theme="black"] .custom-quill .ql-editor h2,
+[data-theme="black"] .custom-quill .ql-editor h3,
+[data-theme="black"] .custom-quill .ql-editor h4,
+[data-theme="black"] .custom-quill .ql-editor h5,
+[data-theme="black"] .custom-quill .ql-editor h6 {
+  color: #ffffff;
+}
+
+/* Code blocks dalam custom-quill editor */
+.custom-quill .ql-editor pre.ql-syntax {
+  position: relative !important;
+  padding: 3em 60px 1.5em 1.5em !important;
+  border-radius: 12px !important;
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Monaco, "Cascadia Code",
+    "Roboto Mono", Consolas, "Courier New", monospace !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  overflow-x: auto !important;
+  margin: 1.5em 0 !important;
+  font-weight: 400 !important;
+  font-feature-settings: "liga" 1, "calt" 1 !important;
+  font-variant-ligatures: common-ligatures !important;
+}
+
+/*
+/* Wireframe theme code blocks */
+[data-theme="wireframe"] .custom-quill .ql-editor pre.ql-syntax {
+  background-color: #f8fafc !important;
+  color: #1f2937 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-editor pre.ql-syntax::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 40px !important;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  border-radius: 12px 12px 0 0 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-editor pre.ql-syntax::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 14px !important;
+  left: 14px !important;
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #ff5f57 !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 0 1px rgba(255, 95, 87, 0.25), 20px 0 0 0 #ffbd2e,
+    20px 0 0 1px rgba(255, 189, 46, 0.25), 40px 0 0 0 #28ca42,
+    40px 0 0 1px rgba(40, 202, 66, 0.25), 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Dark theme code blocks */
+[data-theme="dark"] .custom-quill .ql-editor pre.ql-syntax,
+.dark .custom-quill .ql-editor pre.ql-syntax {
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important;
+  border: 1px solid #374151 !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-editor pre.ql-syntax::before,
+.dark .custom-quill .ql-editor pre.ql-syntax::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 40px !important;
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%) !important;
+  border-radius: 12px 12px 0 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-editor pre.ql-syntax::after,
+.dark .custom-quill .ql-editor pre.ql-syntax::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 14px !important;
+  left: 14px !important;
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #ff5f57 !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 0 1px rgba(255, 95, 87, 0.25), 20px 0 0 0 #ffbd2e,
+    20px 0 0 1px rgba(255, 189, 46, 0.25), 40px 0 0 0 #28ca42,
+    40px 0 0 1px rgba(40, 202, 66, 0.25), 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Black theme code blocks */
+[data-theme="black"] .custom-quill .ql-editor pre.ql-syntax {
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="black"] .custom-quill .ql-editor pre.ql-syntax::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 40px !important;
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%) !important;
+  border-radius: 12px 12px 0 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="black"] .custom-quill .ql-editor pre.ql-syntax::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 14px !important;
+  left: 14px !important;
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #ff5f57 !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 0 1px rgba(255, 95, 87, 0.25), 20px 0 0 0 #ffbd2e,
+    20px 0 0 1px rgba(255, 189, 46, 0.25), 40px 0 0 0 #28ca42,
+    40px 0 0 1px rgba(40, 202, 66, 0.25), 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Syntax highlighting untuk custom-quill editor */
+[data-theme="wireframe"] .custom-quill .ql-editor .hljs-keyword,
+[data-theme="wireframe"] .custom-quill .ql-editor .token.keyword {
+  color: #d73a49 !important;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-editor .hljs-string,
+[data-theme="wireframe"] .custom-quill .ql-editor .token.string {
+  color: #032f62 !important;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-editor .hljs-comment,
+[data-theme="wireframe"] .custom-quill .ql-editor .token.comment {
+  color: #6a737d !important;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-editor .hljs-function,
+[data-theme="wireframe"] .custom-quill .ql-editor .token.function {
+  color: #6f42c1 !important;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-editor .hljs-variable,
+[data-theme="wireframe"] .custom-quill .ql-editor .token.variable {
+  color: #e36209 !important;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-editor .hljs-number,
+[data-theme="wireframe"] .custom-quill .ql-editor .token.number {
+  color: #005cc5 !important;
+}
+
+/* Dark theme syntax highlighting */
+[data-theme="dark"] .custom-quill .ql-editor .hljs-keyword,
+[data-theme="dark"] .custom-quill .ql-editor .token.keyword,
+.dark .custom-quill .ql-editor .hljs-keyword,
+.dark .custom-quill .ql-editor .token.keyword,
+[data-theme="black"] .custom-quill .ql-editor .hljs-keyword,
+[data-theme="black"] .custom-quill .ql-editor .token.keyword {
+  color: #569cd6 !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-editor .hljs-string,
+[data-theme="dark"] .custom-quill .ql-editor .token.string,
+.dark .custom-quill .ql-editor .hljs-string,
+.dark .custom-quill .ql-editor .token.string,
+[data-theme="black"] .custom-quill .ql-editor .hljs-string,
+[data-theme="black"] .custom-quill .ql-editor .token.string {
+  color: #ce9178 !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-editor .hljs-comment,
+[data-theme="dark"] .custom-quill .ql-editor .token.comment,
+.dark .custom-quill .ql-editor .hljs-comment,
+.dark .custom-quill .ql-editor .token.comment,
+[data-theme="black"] .custom-quill .ql-editor .hljs-comment,
+[data-theme="black"] .custom-quill .ql-editor .token.comment {
+  color: #6a9955 !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-editor .hljs-function,
+[data-theme="dark"] .custom-quill .ql-editor .token.function,
+.dark .custom-quill .ql-editor .hljs-function,
+.dark .custom-quill .ql-editor .token.function,
+[data-theme="black"] .custom-quill .ql-editor .hljs-function,
+[data-theme="black"] .custom-quill .ql-editor .token.function {
+  color: #dcdcaa !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-editor .hljs-variable,
+[data-theme="dark"] .custom-quill .ql-editor .token.variable,
+.dark .custom-quill .ql-editor .hljs-variable,
+.dark .custom-quill .ql-editor .token.variable,
+[data-theme="black"] .custom-quill .ql-editor .hljs-variable,
+[data-theme="black"] .custom-quill .ql-editor .token.variable {
+  color: #4fc1ff !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-editor .hljs-number,
+[data-theme="dark"] .custom-quill .ql-editor .token.number,
+.dark .custom-quill .ql-editor .hljs-number,
+.dark .custom-quill .ql-editor .token.number,
+[data-theme="black"] .custom-quill .ql-editor .hljs-number,
+[data-theme="black"] .custom-quill .ql-editor .token.number {
+  color: #b5cea8 !important;
+}
+
+/* Inline code dalam custom-quill editor */
+[data-theme="wireframe"] .custom-quill .ql-editor code:not(pre code) {
+  background: rgba(59, 130, 246, 0.1) !important;
+  color: #3b82f6 !important;
+  border: 1px solid rgba(59, 130, 246, 0.2) !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 4px !important;
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Monaco, "Cascadia Code",
+    "Roboto Mono", Consolas, "Courier New", monospace !important;
+  font-size: 0.9em !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-editor code:not(pre code),
+.dark .custom-quill .ql-editor code:not(pre code),
+[data-theme="black"] .custom-quill .ql-editor code:not(pre code) {
+  background: rgba(79, 70, 229, 0.15) !important;
+  color: #818cf8 !important;
+  border: 1px solid rgba(79, 70, 229, 0.3) !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 4px !important;
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Monaco, "Cascadia Code",
+    "Roboto Mono", Consolas, "Courier New", monospace !important;
+  font-size: 0.9em !important;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+  .ql-editor {
+    padding: 12px !important;
+    font-size: 14px !important;
+  }
+
+  .react-quill .ql-toolbar {
+    padding: 6px 8px !important;
+  }
+
+  .ql-snow .ql-toolbar button,
+  .ql-snow .ql-toolbar .ql-picker-label {
+    padding: 4px !important;
+  }
+
+  .ql-editor pre.ql-syntax {
+    font-size: 12px !important;
+    padding: 2.5em 50px 1rem 1rem !important; /* Adjusted for mobile copy button */
+    margin: 1rem 0 !important;
+    border-radius: 8px !important;
+  }
+
+  .quill-content pre.ql-syntax .copy-code-btn,
+  .quill-content pre:has(code) .copy-code-btn,
+  .ql-editor pre.ql-syntax .copy-code-btn,
+  .ql-editor pre:has(code) .copy-code-btn {
+    width: 28px !important;
+    height: 28px !important;
+    top: 8px !important;
+    right: 8px !important;
+    font-size: 12px !important;
+  }
+
+  .quill-content pre,
+  .ql-editor pre.ql-syntax {
+    padding-right: 50px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ql-editor {
+    min-height: 150px !important;
+  }
+
+  .quill-content h1 {
+    font-size: 1.25rem !important;
+  }
+
+  .quill-content h2 {
+    font-size: 1.125rem !important;
+  }
+
+  .quill-content h3 {
+    font-size: 1rem !important;
+  }
+
+  .quill-content pre.ql-syntax .copy-code-btn,
+  .quill-content pre:has(code) .copy-code-btn,
+  .ql-editor pre.ql-syntax .copy-code-btn,
+  .ql-editor pre:has(code) .copy-code-btn {
+    width: 24px !important;
+    height: 24px !important;
+    top: 6px !important;
+    right: 6px !important;
+    font-size: 10px !important;
+  }
+
+  .quill-content pre,
+  .ql-editor pre.ql-syntax {
+    padding-right: 40px !important;
+  }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ql-snow .ql-picker-options {
+  animation: fadeIn 0.2s ease !important;
+}
+
+/* ========================================
+   UTILITY STYLES
+   ======================================== */
+
+/* Line clamp utility - Clean truncation without gradients */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-5 {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Ensure clean text truncation */
+.quill-content.line-clamp-3,
+.quill-content.line-clamp-4,
+.quill-content.line-clamp-5 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Truncated content styles - No gradient */
+.quill-content.truncated {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Remove gradient overlay */
+.quill-content.truncated::after {
+  display: none;
+}
+
+/* ========================================
+   EXISTING STYLES (Preserved)
+   ======================================== */
+
+.logo-text-animation-by-bimarf {
+  background: linear-gradient(
+    330deg,
+    #ff0000 0%,
+    #31e400 25%,
+    #00f7ff 50%,
+    #7f00ff 75%,
+    #8f1919 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate 1.5s linear infinite;
+}
+
+@keyframes animate {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.title-cell {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.single-column {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.header-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top, right;
+}
+
+@media only screen and (max-width: 444px) {
+  .header-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -700px;
+  }
+} /* ========================================
+   QUILL EDITOR DARK/LIGHT MODE STYLES
+   ======================================== */
+/* ================================
+   FORCE LIGHT MODE - PROSE FIX
+================================ */
+
+/* Base */
+.force-light-mode {
+  color: #374151 !important; /* text-gray-700 */
+  background-color: #ffffff !important;
+}
+
+.force-light-mode .prose {
+  color: inherit !important;
+  max-width: 100% !important; /* hilangkan max-width default typography */
+}
+
+/* Headings */
+.force-light-mode .prose :where(h1, h2, h3, h4, h5, h6) {
+  margin-top: 2em !important;
+  margin-bottom: 1em !important;
+  background: linear-gradient(135deg, #ea580c, #dc2626) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Paragraph */
+.force-light-mode .prose :where(p) {
+  margin-bottom: 1.5em !important;
+  line-height: 1.8 !important;
+  color: #374151 !important; /* text-gray-700 */
+}
+
+/* Links */
+.force-light-mode .prose :where(a) {
+  color: #3b82f6 !important; /* blue-500 */
+  text-decoration: underline !important;
+}
+
+/* Strong / Bold */
+.force-light-mode .prose :where(strong, b) {
+  color: #111827 !important; /* text-gray-900 */
+}
+
+/* Lists */
+.force-light-mode .prose :where(ul, ol) {
+  margin: 1.5em 0 !important;
+  padding-left: 2em !important;
+}
+.force-light-mode .prose :where(li) {
+  margin: 0.75em 0 !important;
+}
+.force-light-mode .prose :where(li)::marker {
+  color: #ea580c !important;
+}
+
+/* Images */
+.force-light-mode .prose :where(img) {
+  border-radius: 1rem !important;
+  margin: 2em 0 !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Blockquote */
+.force-light-mode .prose :where(blockquote) {
+  border-left: 4px solid #3b82f6 !important;
+  color: rgba(31, 41, 55, 0.7) !important;
+  background: rgba(59, 130, 246, 0.05) !important;
+  padding: 1em 1.5em !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Inline Code */
+.force-light-mode .prose :where(code):not(pre code) {
+  background: rgba(59, 130, 246, 0.1) !important;
+  color: #3b82f6 !important;
+  border: 1px solid rgba(59, 130, 246, 0.2) !important;
+  border-radius: 0.25rem !important;
+  padding: 0.2em 0.4em !important;
+}
+
+/* Preformatted Blocks */
+.force-light-mode .prose :where(pre) {
+  background: #f8fafc !important;
+  color: #1f2937 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.75rem !important;
+  padding: 1em !important;
+  overflow-x: auto !important;
+  position: relative !important;
+}
+.force-light-mode .prose :where(pre code) {
+  background: transparent !important;
+  color: #1f2937 !important;
+}
+
+/* Syntax Highlighting (hljs) */
+.force-light-mode .hljs-keyword {
+  color: #d73a49 !important;
+}
+.force-light-mode .hljs-string {
+  color: #032f62 !important;
+}
+.force-light-mode .hljs-comment {
+  color: #6a737d !important;
+}
+.force-light-mode .hljs-function {
+  color: #6f42c1 !important;
+}
+.force-light-mode .hljs-variable {
+  color: #e36209 !important;
+}
+.force-light-mode .hljs-number,
+.force-light-mode .hljs-literal,
+.force-light-mode .hljs-boolean {
+  color: #005cc5 !important;
+}
+.force-light-mode .hljs-class,
+.force-light-mode .hljs-tag {
+  color: #22863a !important;
+}
+.force-light-mode .hljs-attr {
+  color: #6f42c1 !important;
+}
+.force-light-mode .hljs-attr-value {
+  color: #032f62 !important;
+}
+
+/* =========================================
+   FORCE LIGHT (tanpa prose, lebih generic)
+========================================= */
+
+.force-light {
+  color: #374151 !important;
+  background-color: #ffffff !important;
+}
+
+.force-light
+  *:not(svg):not(path):not(circle):not(rect):not(line):not(polyline):not(
+    polygon
+  ) {
+  color: inherit !important;
+  background-color: inherit !important;
+}
+
+.force-light h1,
+.force-light h2,
+.force-light h3,
+.force-light h4,
+.force-light h5,
+.force-light h6 {
+  color: #111827 !important;
+}
+
+.force-light a {
+  color: #3b82f6 !important;
+}
+
+.force-light strong,
+.force-light b {
+  color: #111827 !important;
+}
+
+/* Inline code */
+.force-light code:not(pre code) {
+  background: #f8fafc !important;
+  color: #1f2937 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.75rem !important;
+  padding: 1em !important;
+  overflow-x: auto !important;
+  position: relative !important;
+}
+
+/* Pre/code block */
+.force-light pre {
+  background: #f8fafc !important;
+  color: #1f2937 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.75rem !important;
+  padding: 1em !important;
+  overflow-x: auto !important;
+  position: relative !important;
+}
+.force-light pre code {
+  background: #f8fafc !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.75rem !important;
+  color: #1f2937 !important;
+}
+
+/* CSS Variables for Theme Colors */
+/* ==================================================
+   Global Variables and Base Styles
+   ================================================== */
+:root {
+  --quill-bg: #ffffff;
+  --quill-border: #e2e8f0;
+  --quill-toolbar-bg: #f8fafc;
+  --quill-toolbar-border: #e5e7eb;
+  --quill-text: #1f2937;
+  --quill-text-muted: #6b7280;
+  --quill-icon: #374151;
+  --quill-hover-bg: #e5e7eb;
+  --quill-active-bg: #dbeafe;
+  --quill-active-text: #1d4ed8;
+  --quill-dropdown-bg: #ffffff;
+  --quill-dropdown-shadow: rgba(0, 0, 0, 0.1);
+  --quill-link: #3b82f6;
+  --quill-link-hover: #1d4ed8;
+  --quill-quote-bg: #f8fafc;
+  --quill-quote-border: #3b82f6;
+  --quill-quote-text: #374151;
+  --quill-code-bg: #f1f5f9;
+  --quill-code-text: #e11d48;
+  --quill-code-border: #e2e8f0;
+  --quill-code-block-bg: #0f172a;
+  --quill-code-block-text: #f8fafc;
+  --quill-code-block-border: #334155;
+  --quill-scrollbar-track: #f1f5f9;
+  --quill-scrollbar-thumb: #cbd5e1;
+  --quill-scrollbar-thumb-hover: #94a3b8;
+  --quill-placeholder: #9ca3af;
+}
+
+[data-theme="dark"],
+.dark {
+  --quill-bg: #121214;
+  --quill-border: #1a1a1d;
+  --quill-toolbar-bg: #0a0a0a;
+  --quill-toolbar-border: #1a1a1d;
+  --quill-text: #ffffff;
+  --quill-text-muted: #e5e7eb;
+  --quill-icon: #ffffff;
+  --quill-hover-bg: #1a1a1d;
+  --quill-active-bg: #4338ca;
+  --quill-active-text: #ffffff;
+  --quill-dropdown-bg: #121214;
+  --quill-dropdown-shadow: rgba(0, 0, 0, 0.3);
+  --quill-link: #4f46e5;
+  --quill-link-hover: #6366f1;
+  --quill-quote-bg: #121214;
+  --quill-quote-border: #4f46e5;
+  --quill-quote-text: #e5e7eb;
+  --quill-code-bg: #121214;
+  --quill-code-text: #f43f5e;
+  --quill-code-border: #1a1a1d;
+  --quill-placeholder: #6b7280;
+}
+
+[data-theme="black"] {
+  --quill-bg: #000000;
+  --quill-border: #1a1a1a;
+  --quill-toolbar-bg: #0a0a0a;
+  --quill-toolbar-border: #1a1a1a;
+  --quill-text: #ffffff;
+  --quill-text-muted: #cccccc;
+  --quill-icon: #ffffff;
+  --quill-hover-bg: #1a1a1a;
+  --quill-active-bg: #333333;
+  --quill-active-text: #ffffff;
+  --quill-dropdown-bg: #000000;
+  --quill-dropdown-shadow: rgba(255, 255, 255, 0.1);
+  --quill-link: #4f46e5;
+  --quill-link-hover: #6366f1;
+  --quill-quote-bg: #0a0a0a;
+  --quill-quote-border: #4f46e5;
+  --quill-quote-text: #cccccc;
+  --quill-code-bg: #1a1a1a;
+  --quill-code-text: #f43f5e;
+  --quill-code-border: #333333;
+  --quill-placeholder: #666666;
+}
+/* Force Light Mode untuk Quill saja */
+.react-quill.force-light {
+  --quill-bg: #ffffff !important;
+  --quill-border: #e2e8f0 !important;
+  --quill-toolbar-bg: #f8fafc !important;
+  --quill-toolbar-border: #e5e7eb !important;
+  --quill-text: #1f2937 !important;
+  --quill-text-muted: #6b7280 !important;
+  --quill-icon: #374151 !important;
+  --quill-hover-bg: #e5e7eb !important;
+  --quill-active-bg: #dbeafe !important;
+  --quill-active-text: #1d4ed8 !important;
+  --quill-dropdown-bg: #ffffff !important;
+  --quill-dropdown-shadow: rgba(0, 0, 0, 0.1) !important;
+  --quill-link: #3b82f6 !important;
+  --quill-link-hover: #1d4ed8 !important;
+  --quill-quote-bg: #f8fafc !important;
+  --quill-quote-border: #3b82f6 !important;
+  --quill-quote-text: #374151 !important;
+  --quill-code-bg: #f1f5f9 !important;
+  --quill-code-text: #e11d48 !important;
+  --quill-code-border: #e2e8f0 !important;
+  --quill-placeholder: #9ca3af !important;
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+/* ========================================
+   MAIN QUILL CONTAINER
+   ======================================== */
+
+.react-quill {
+  border: 1px solid var(--quill-border) !important;
+  box-shadow: none !important;
+  background-color: var(--quill-bg) !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  font-family: inherit !important;
+}
+
+/* ========================================
+   QUILL CONTAINER
+   ======================================== */
+
+.react-quill .ql-container {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border-radius: 0 0 8px 8px !important;
+  font-family: inherit !important;
+}
+
+/* ========================================
+   QUILL EDITOR
+   ======================================== */
+
+.ql-editor {
+  padding: 16px !important;
+  min-height: 200px !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: var(--quill-text) !important;
+  border: none !important;
+  border-radius: 0 0 8px 8px !important;
+  background-color: transparent !important;
+  font-family: inherit !important;
+  white-space: pre-wrap !important; /* Preserve whitespace */
+  word-wrap: break-word !important;
+}
+
+/* Placeholder Styling */
+.ql-editor.ql-blank::before {
+  color: var(--quill-placeholder) !important;
+  font-style: italic !important;
+  opacity: 0.7 !important;
+}
+
+/* ========================================
+   QUILL TOOLBAR
+   ======================================== */
+
+.react-quill .ql-toolbar {
+  border: none !important;
+  border-bottom: 1px solid var(--quill-toolbar-border) !important;
+  background-color: var(--quill-toolbar-bg) !important;
+  border-radius: 8px 8px 0 0 !important;
+  padding: 8px 12px !important;
+}
+
+/* Toolbar Icons and Buttons */
+.ql-snow .ql-toolbar button,
+.ql-snow .ql-toolbar .ql-picker-label {
+  color: var(--quill-icon) !important;
+  border: none !important;
+  padding: 6px !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+}
+
+.ql-snow .ql-toolbar button:hover,
+.ql-snow .ql-toolbar .ql-picker-label:hover {
+  background-color: var(--quill-hover-bg) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Active/Selected Toolbar Buttons */
+.ql-snow .ql-toolbar button.ql-active,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active {
+  background-color: var(--quill-active-bg) !important;
+  color: var(--quill-active-text) !important;
+}
+
+/* Toolbar Separators */
+.ql-toolbar .ql-formats {
+  margin-right: 15px !important;
+  position: relative !important;
+}
+
+.ql-toolbar .ql-formats:not(:last-child)::after {
+  content: "" !important;
+  position: absolute !important;
+  right: -7px !important;
+  top: 25% !important;
+  height: 50% !important;
+  width: 1px !important;
+  background-color: var(--quill-border) !important;
+}
+
+/* ========================================
+   DROPDOWN MENUS
+   ======================================== */
+
+.ql-snow .ql-picker-options {
+  background-color: var(--quill-dropdown-bg) !important;
+  border: 1px solid var(--quill-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px var(--quill-dropdown-shadow) !important;
+  padding: 4px !important;
+  margin-top: 4px !important;
+  z-index: 1000 !important;
+}
+
+.ql-snow .ql-picker-item {
+  color: var(--quill-text) !important;
+  padding: 8px 12px !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+}
+
+.ql-snow .ql-picker-item:hover {
+  background-color: var(--quill-hover-bg) !important;
+}
+
+.ql-snow .ql-picker-item.ql-selected {
+  background-color: var(--quill-active-bg) !important;
+  color: var(--quill-active-text) !important;
+}
+
+/* ========================================
+   TYPOGRAPHY STYLES
+   ======================================== */
+
+/* Headings */
+.ql-editor h1 {
+  font-size: 2.5em !important;
+  font-weight: 700 !important;
+  margin: 0.5em 0 !important;
+  color: var(--quill-text) !important;
+  line-height: 1.2 !important;
+}
+
+.ql-editor h2 {
+  font-size: 2em !important;
+  font-weight: 600 !important;
+  margin: 0.5em 0 !important;
+  color: var(--quill-text) !important;
+  line-height: 1.3 !important;
+}
+
+.ql-editor h3 {
+  font-size: 1.75em !important;
+  font-weight: 600 !important;
+  margin: 0.5em 0 !important;
+  color: var(--quill-text) !important;
+  line-height: 1.3 !important;
+}
+
+.ql-editor h4 {
+  font-size: 1.5em !important;
+  font-weight: 500 !important;
+  margin: 0.5em 0 !important;
+  color: var(--quill-text) !important;
+  line-height: 1.4 !important;
+}
+
+.ql-editor h5 {
+  font-size: 1.25em !important;
+  font-weight: 500 !important;
+  margin: 0.5em 0 !important;
+  color: var(--quill-text) !important;
+  line-height: 1.4 !important;
+}
+
+.ql-editor h6 {
+  font-size: 1em !important;
+  font-weight: 500 !important;
+  margin: 0.5em 0 !important;
+  color: var(--quill-text) !important;
+  line-height: 1.5 !important;
+}
+
+/* ========================================
+   TEXT ALIGNMENT
+   ======================================== */
+
+/* ========================================
+   BLOCKQUOTE STYLES
+   ======================================== */
+
+.ql-editor blockquote {
+  border-left: 4px solid var(--quill-quote-border) !important;
+  margin: 1.5em 0 !important;
+  padding: 1em 1.5em !important;
+  background-color: var(--quill-quote-bg) !important;
+  font-style: italic !important;
+  color: var(--quill-quote-text) !important;
+  border-radius: 0 8px 8px 0 !important;
+  position: relative !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.ql-editor blockquote::before {
+  content: '"' !important;
+  font-size: 3em !important;
+  color: var(--quill-quote-border) !important;
+  position: absolute !important;
+  left: 0.5em !important;
+  top: -0.2em !important;
+  opacity: 0.3 !important;
+}
+/* ========================================
+   INLINE CODE
+   ======================================== */
+.ql-editor code {
+  background-color: var(--quill-code-bg) !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 6px !important;
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Monaco, "Cascadia Code",
+    "Roboto Mono", Consolas, "Courier New", monospace !important;
+  font-size: 0.875em !important;
+  color: var(--quill-code-text) !important;
+  border: 1px solid var(--quill-code-border) !important;
+  font-weight: 500 !important;
+  font-feature-settings: "liga" 1, "calt" 1 !important;
+  font-variant-ligatures: common-ligatures !important;
+  position: relative !important;
+  top: -1px !important;
+  white-space: break-spaces !important; /* biar inline code tetap wrap kalau panjang */
+  word-break: break-word !important;
+}
+
+/* ========================================
+   CODE BLOCKS
+   ======================================== */
+.ql-editor pre.ql-syntax {
+  white-space: pre-wrap !important; /* supaya wrap */
+  word-break: break-word !important; /* pecah kata panjang */
+  overflow-x: hidden !important; /* jangan bisa scroll kanan */
+  overflow-wrap: anywhere !important; /* pecah kapanpun */
+}
+
+/* Scrollbar Custom */
+.ql-editor pre.ql-syntax::-webkit-scrollbar {
+  height: 8px;
+}
+.ql-editor pre.ql-syntax::-webkit-scrollbar-thumb {
+  background: rgba(155, 155, 155, 0.4);
+  border-radius: 4px;
+}
+.ql-editor pre.ql-syntax::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ========================================
+   HEADER (TITLEBAR ala VSCode)
+   ======================================== */
+.ql-editor pre.ql-syntax::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 40px !important;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  border-radius: 12px 12px 0 0 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  pointer-events: none; /* biar gak ganggu select teks */
+}
+
+[data-theme="dark"] .ql-editor pre.ql-syntax::before,
+.dark .ql-editor pre.ql-syntax::before,
+[data-theme="black"] .ql-editor pre.ql-syntax::before {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ========================================
+   TRAFFIC LIGHT DOTS
+   ======================================== */
+.ql-editor pre.ql-syntax::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 12px !important;
+  left: 16px !important;
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #ff5f57 !important;
+  border-radius: 50% !important;
+  box-shadow: 20px 0 0 0 #ffbd2e, 20px 0 0 1px rgba(255, 189, 46, 0.25),
+    40px 0 0 0 #28ca42, 40px 0 0 1px rgba(40, 202, 66, 0.25),
+    0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ========================================
+   COPY BUTTON FOR QUILL CODE BLOCKS ONLY
+   ======================================== */
+
+/* Copy Button hanya untuk Quill code blocks */
+.quill-content pre.ql-syntax .copy-code-btn,
+.quill-content pre:has(code) .copy-code-btn,
+.ql-editor pre.ql-syntax .copy-code-btn,
+.ql-editor pre:has(code) .copy-code-btn {
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  width: 32px !important;
+  height: 32px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  opacity: 0 !important;
+  transform: translateY(-4px) !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 14px !important;
+  z-index: 20 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #374151 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Hover state untuk copy button */
+.quill-content pre.ql-syntax:hover .copy-code-btn,
+.quill-content pre:has(code):hover .copy-code-btn,
+.ql-editor pre.ql-syntax:hover .copy-code-btn,
+.ql-editor pre:has(code):hover .copy-code-btn {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.quill-content pre.ql-syntax .copy-code-btn:hover,
+.quill-content pre:has(code) .copy-code-btn:hover,
+.ql-editor pre.ql-syntax .copy-code-btn:hover,
+.ql-editor pre:has(code) .copy-code-btn:hover {
+  background: #ffffff !important;
+  color: #3b82f6 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(0) scale(1.05) !important;
+}
+
+/* Active state untuk copy button */
+.quill-content pre.ql-syntax .copy-code-btn:active,
+.quill-content pre:has(code) .copy-code-btn:active,
+.ql-editor pre.ql-syntax .copy-code-btn:active,
+.ql-editor pre:has(code) .copy-code-btn:active {
+  transform: translateY(0) scale(0.95) !important;
+}
+
+/* Dark theme copy button */
+[data-theme="dark"] .quill-content pre.ql-syntax .copy-code-btn,
+[data-theme="dark"] .quill-content pre:has(code) .copy-code-btn,
+[data-theme="dark"] .ql-editor pre.ql-syntax .copy-code-btn,
+[data-theme="dark"] .ql-editor pre:has(code) .copy-code-btn,
+.dark .quill-content pre.ql-syntax .copy-code-btn,
+.dark .quill-content pre:has(code) .copy-code-btn,
+.dark .ql-editor pre.ql-syntax .copy-code-btn,
+.dark .ql-editor pre:has(code) .copy-code-btn {
+  background: rgba(55, 65, 81, 0.9) !important;
+  color: #d1d5db !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+[data-theme="dark"] .quill-content pre.ql-syntax .copy-code-btn:hover,
+[data-theme="dark"] .quill-content pre:has(code) .copy-code-btn:hover,
+[data-theme="dark"] .ql-editor pre.ql-syntax .copy-code-btn:hover,
+[data-theme="dark"] .ql-editor pre:has(code) .copy-code-btn:hover,
+.dark .quill-content pre.ql-syntax .copy-code-btn:hover,
+.dark .quill-content pre:has(code) .copy-code-btn:hover,
+.dark .ql-editor pre.ql-syntax .copy-code-btn:hover,
+.dark .ql-editor pre:has(code) .copy-code-btn:hover {
+  background: #374151 !important;
+  color: #60a5fa !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Black theme copy button */
+[data-theme="black"] .quill-content pre.ql-syntax .copy-code-btn,
+[data-theme="black"] .quill-content pre:has(code) .copy-code-btn,
+[data-theme="black"] .ql-editor pre.ql-syntax .copy-code-btn,
+[data-theme="black"] .ql-editor pre:has(code) .copy-code-btn {
+  background: rgba(42, 42, 42, 0.9) !important;
+  color: #e5e7eb !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+[data-theme="black"] .quill-content pre.ql-syntax .copy-code-btn:hover,
+[data-theme="black"] .quill-content pre:has(code) .copy-code-btn:hover,
+[data-theme="black"] .ql-editor pre.ql-syntax .copy-code-btn:hover,
+[data-theme="black"] .ql-editor pre:has(code) .copy-code-btn:hover {
+  background: #2a2a2a !important;
+  color: #4f46e5 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Force light mode copy button */
+.force-light .quill-content pre.ql-syntax .copy-code-btn,
+.force-light .quill-content pre:has(code) .copy-code-btn,
+.force-light .ql-editor pre.ql-syntax .copy-code-btn,
+.force-light .ql-editor pre:has(code) .copy-code-btn,
+.force-light-mode .quill-content pre.ql-syntax .copy-code-btn,
+.force-light-mode .quill-content pre:has(code) .copy-code-btn,
+.force-light-mode .ql-editor pre.ql-syntax .copy-code-btn,
+.force-light-mode .ql-editor pre:has(code) .copy-code-btn {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #374151 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.force-light .quill-content pre.ql-syntax .copy-code-btn:hover,
+.force-light .quill-content pre:has(code) .copy-code-btn:hover,
+.force-light .ql-editor pre.ql-syntax .copy-code-btn:hover,
+.force-light .ql-editor pre:has(code) .copy-code-btn:hover,
+.force-light-mode .quill-content pre.ql-syntax .copy-code-btn:hover,
+.force-light-mode .quill-content pre:has(code) .copy-code-btn:hover,
+.force-light-mode .ql-editor pre.ql-syntax .copy-code-btn:hover,
+.force-light-mode .ql-editor pre:has(code) .copy-code-btn:hover {
+  background: #ffffff !important;
+  color: #3b82f6 !important;
+  border-color: rgba(59, 130, 246, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15) !important;
+}
+
+/* Success state (ketika berhasil copy) */
+.quill-content pre.ql-syntax .copy-code-btn.success,
+.quill-content pre:has(code) .copy-code-btn.success,
+.ql-editor pre.ql-syntax .copy-code-btn.success,
+.ql-editor pre:has(code) .copy-code-btn.success {
+  background: rgba(16, 185, 129, 0.9) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3) !important;
+}
+
+/* Error state (ketika gagal copy) */
+.quill-content pre.ql-syntax .copy-code-btn.error,
+.quill-content pre:has(code) .copy-code-btn.error,
+.ql-editor pre.ql-syntax .copy-code-btn.error,
+.ql-editor pre:has(code) .copy-code-btn.error {
+  background: rgba(239, 68, 68, 0.9) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Focus state untuk accessibility */
+.quill-content pre.ql-syntax .copy-code-btn:focus,
+.quill-content pre:has(code) .copy-code-btn:focus,
+.ql-editor pre.ql-syntax .copy-code-btn:focus,
+.ql-editor pre:has(code) .copy-code-btn:focus {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Tooltip untuk copy button */
+.quill-content pre.ql-syntax .copy-code-btn::before,
+.quill-content pre:has(code) .copy-code-btn::before,
+.ql-editor pre.ql-syntax .copy-code-btn::before,
+.ql-editor pre:has(code) .copy-code-btn::before {
+  content: attr(title);
+  position: absolute;
+  bottom: -35px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 30;
+}
+
+.quill-content pre.ql-syntax .copy-code-btn:hover::before,
+.quill-content pre:has(code) .copy-code-btn:hover::before,
+.ql-editor pre.ql-syntax .copy-code-btn:hover::before,
+.ql-editor pre:has(code) .copy-code-btn:hover::before {
+  opacity: 1;
+}
+
+/* Dark theme tooltip */
+[data-theme="dark"] .quill-content pre.ql-syntax .copy-code-btn::before,
+[data-theme="dark"] .quill-content pre:has(code) .copy-code-btn::before,
+[data-theme="dark"] .ql-editor pre.ql-syntax .copy-code-btn::before,
+[data-theme="dark"] .ql-editor pre:has(code) .copy-code-btn::before,
+.dark .quill-content pre.ql-syntax .copy-code-btn::before,
+.dark .quill-content pre:has(code) .copy-code-btn::before,
+.dark .ql-editor pre.ql-syntax .copy-code-btn::before,
+.dark .ql-editor pre:has(code) .copy-code-btn::before {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1f2937;
+}
+
+/* Disable text selection pada copy button */
+.quill-content pre.ql-syntax .copy-code-btn,
+.quill-content pre:has(code) .copy-code-btn,
+.ql-editor pre.ql-syntax .copy-code-btn,
+.ql-editor pre:has(code) .copy-code-btn {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+/* Pastikan copy button tidak mempengaruhi layout text */
+.quill-content pre.ql-syntax .copy-code-btn *,
+.quill-content pre:has(code) .copy-code-btn *,
+.ql-editor pre.ql-syntax .copy-code-btn *,
+.ql-editor pre:has(code) .copy-code-btn * {
+  pointer-events: none !important;
+}
+
+/* Pastikan copy button tidak muncul di elemen lain */
+.quill-content p .copy-code-btn,
+.quill-content div:not(pre) .copy-code-btn,
+.quill-content span .copy-code-btn,
+.quill-content blockquote .copy-code-btn,
+.quill-content h1 .copy-code-btn,
+.quill-content h2 .copy-code-btn,
+.quill-content h3 .copy-code-btn,
+.quill-content h4 .copy-code-btn,
+.quill-content h5 .copy-code-btn,
+.quill-content h6 .copy-code-btn,
+.quill-content ul .copy-code-btn,
+.quill-content ol .copy-code-btn,
+.quill-content li .copy-code-btn,
+.quill-content table .copy-code-btn,
+.quill-content code:not(pre code) .copy-code-btn {
+  display: none !important;
+}
+
+/* Jika menggunakan selector :not() tidak didukung, gunakan ini sebagai fallback */
+@supports not (selector(:has(code))) {
+  .quill-content pre .copy-code-btn,
+  .ql-editor pre .copy-code-btn {
+    display: none !important;
+  }
+
+  .quill-content pre.ql-syntax .copy-code-btn,
+  .ql-editor pre.ql-syntax .copy-code-btn {
+    display: flex !important;
+  }
+
+  .quill-content pre code ~ .copy-code-btn,
+  .ql-editor pre code ~ .copy-code-btn {
+    display: flex !important;
+  }
+}
+
+/* Animasi untuk copy button */
+@keyframes copyButtonSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes copyButtonSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.8);
+  }
+}
+
+.quill-content pre.ql-syntax:hover .copy-code-btn,
+.quill-content pre:has(code):hover .copy-code-btn,
+.ql-editor pre.ql-syntax:hover .copy-code-btn,
+.ql-editor pre:has(code):hover .copy-code-btn {
+  animation: copyButtonSlideIn 0.2s ease-out forwards !important;
+}
+
+/* Custom scrollbar untuk code blocks dengan copy button */
+.quill-content pre.ql-syntax::-webkit-scrollbar,
+.quill-content pre:has(code)::-webkit-scrollbar,
+.ql-editor pre.ql-syntax::-webkit-scrollbar,
+.ql-editor pre:has(code)::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.quill-content pre.ql-syntax::-webkit-scrollbar-track,
+.quill-content pre:has(code)::-webkit-scrollbar-track,
+.ql-editor pre.ql-syntax::-webkit-scrollbar-track,
+.ql-editor pre:has(code)::-webkit-scrollbar-track {
+  background: transparent !important;
+  border-radius: 4px !important;
+}
+
+.quill-content pre.ql-syntax::-webkit-scrollbar-thumb,
+.quill-content pre:has(code)::-webkit-scrollbar-thumb,
+.ql-editor pre.ql-syntax::-webkit-scrollbar-thumb,
+.ql-editor pre:has(code)::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 4px !important;
+  transition: background 0.2s ease !important;
+}
+
+.quill-content pre.ql-syntax::-webkit-scrollbar-thumb:hover,
+.quill-content pre:has(code)::-webkit-scrollbar-thumb:hover,
+.ql-editor pre.ql-syntax::-webkit-scrollbar-thumb:hover,
+.ql-editor pre:has(code)::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Print styles - hide copy button saat print */
+@media print {
+  .quill-content pre.ql-syntax .copy-code-btn,
+  .quill-content pre:has(code) .copy-code-btn,
+  .ql-editor pre.ql-syntax .copy-code-btn,
+  .ql-editor pre:has(code) .copy-code-btn {
+    display: none !important;
+  }
+
+  .quill-content pre.ql-syntax,
+  .quill-content pre:has(code),
+  .ql-editor pre.ql-syntax,
+  .ql-editor pre:has(code) {
+    padding-right: 1.5em !important;
+  }
+}
+
+/* ========================================
+   SYNTAX HIGHLIGHTING (VS Code Style)
+   ======================================== */
+
+/* Keywords */
+.ql-syntax .hljs-keyword,
+.ql-syntax .token.keyword {
+  color: #c586c0 !important;
+  font-weight: 500 !important;
+}
+
+/* Strings */
+.ql-syntax .hljs-string,
+.ql-syntax .token.string {
+  color: #ce9178 !important;
+}
+
+/* Numbers */
+.ql-syntax .hljs-number,
+.ql-syntax .token.number {
+  color: #b5cea8 !important;
+}
+
+/* Comments */
+.ql-syntax .hljs-comment,
+.ql-syntax .token.comment {
+  color: #6a9955 !important;
+  font-style: italic !important;
+  opacity: 0.8 !important;
+}
+
+/* Functions */
+.ql-syntax .hljs-function,
+.ql-syntax .token.function {
+  color: #dcdcaa !important;
+  font-weight: 500 !important;
+}
+
+/* Variables */
+.ql-syntax .hljs-variable,
+.ql-syntax .token.variable {
+  color: #9cdcfe !important;
+}
+
+/* HTML Tags */
+.ql-syntax .hljs-tag,
+.ql-syntax .token.tag {
+  color: #569cd6 !important;
+}
+
+/* Attributes */
+.ql-syntax .hljs-attr,
+.ql-syntax .token.attr-name {
+  color: #92c5f8 !important;
+}
+
+/* Attribute Values */
+.ql-syntax .hljs-attr-value,
+.ql-syntax .token.attr-value {
+  color: #ce9178 !important;
+}
+
+/* Operators */
+.ql-syntax .hljs-operator,
+.ql-syntax .token.operator {
+  color: #d4d4d4 !important;
+}
+
+/* Punctuation */
+.ql-syntax .hljs-punctuation,
+.ql-syntax .token.punctuation {
+  color: #d4d4d4 !important;
+}
+
+/* Boolean, Null, Undefined */
+.ql-syntax .hljs-literal,
+.ql-syntax .token.boolean,
+.ql-syntax .token.null {
+  color: #569cd6 !important;
+  font-weight: 500 !important;
+}
+
+/* Class Names */
+.ql-syntax .hljs-class,
+.ql-syntax .token.class-name {
+  color: #4ec9b0 !important;
+  font-weight: 500 !important;
+}
+
+/* Built-in Functions/Methods */
+.ql-syntax .hljs-built_in,
+.ql-syntax .token.builtin {
+  color: #dcdcaa !important;
+}
+
+/* CSS Properties */
+.ql-syntax .hljs-attribute,
+.ql-syntax .token.property {
+  color: #92c5f8 !important;
+}
+
+/* CSS Values */
+.ql-syntax .hljs-value,
+.ql-syntax .token.value {
+  color: #ce9178 !important;
+}
+
+/* Selectors */
+.ql-syntax .hljs-selector-tag,
+.ql-syntax .hljs-selector-class,
+.ql-syntax .hljs-selector-id,
+.ql-syntax .token.selector {
+  color: #d7ba7d !important;
+}
+
+/* Important */
+.ql-syntax .hljs-meta,
+.ql-syntax .token.important {
+  color: #ff6b6b !important;
+  font-weight: 600 !important;
+}
+
+/* RegExp */
+.ql-syntax .hljs-regexp,
+.ql-syntax .token.regex {
+  color: #d16969 !important;
+}
+
+/* Template Literals */
+.ql-syntax .hljs-template-tag,
+.ql-syntax .token.template-string {
+  color: #ce9178 !important;
+}
+
+/* Template Variables */
+.ql-syntax .hljs-template-variable,
+.ql-syntax .token.interpolation {
+  color: #9cdcfe !important;
+}
+
+/* ========================================
+   LIST STYLES
+   ======================================== */
+
+.ql-editor ul,
+.ql-editor ol {
+  margin: 1em 0 !important;
+  padding-left: 1.5em !important;
+}
+
+.ql-editor ul {
+  list-style-type: disc !important;
+}
+
+.ql-editor ol {
+  list-style-type: decimal !important;
+}
+
+.ql-editor li {
+  margin: 0.5em 0 !important;
+  line-height: 1.6 !important;
+  color: var(--quill-text) !important;
+}
+
+.ql-editor ul ul {
+  list-style-type: circle !important;
+}
+
+.ql-editor ul ul ul {
+  list-style-type: square !important;
+}
+
+/* ========================================
+   LINK STYLES
+   ======================================== */
+
+.ql-editor a {
+  color: var(--quill-link) !important;
+  text-decoration: underline !important;
+  text-decoration-color: rgba(59, 130, 246, 0.3) !important;
+  transition: all 0.2s ease !important;
+  text-underline-offset: 3px !important;
+}
+
+.ql-editor a:hover {
+  color: var(--quill-link-hover) !important;
+  text-decoration-color: var(--quill-link-hover) !important;
+  text-decoration-thickness: 2px !important;
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
+
+.ql-editor::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.ql-editor::-webkit-scrollbar-track {
+  background: var(--quill-scrollbar-track) !important;
+  border-radius: 4px !important;
+}
+
+.ql-editor::-webkit-scrollbar-thumb {
+  background: var(--quill-scrollbar-thumb) !important;
+  border-radius: 4px !important;
+  transition: background 0.2s ease !important;
+}
+
+.ql-editor::-webkit-scrollbar-thumb:hover {
+  background: var(--quill-scrollbar-thumb-hover) !important;
+}
+
+.ql-editor::-webkit-scrollbar-corner {
+  background: var(--quill-scrollbar-track) !important;
+}
+
+/* ========================================
+   QUILL DISPLAY STYLES (for Content)
+   ======================================== */
+
+.quill-content {
+  max-width: 100%;
+  line-height: 1.625;
+  font-size: 0.875rem;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  font-family: inherit;
+}
+
+/* Remove margin dari elemen pertama dan terakhir */
+.quill-content > *:first-child {
+  margin-top: 0 !important;
+}
+
+.quill-content > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Heading styles untuk quill-content */
+.quill-content h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.quill-content h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.quill-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Theme colors untuk headings */
+[data-theme="wireframe"] .quill-content h1,
+[data-theme="wireframe"] .quill-content h2,
+[data-theme="wireframe"] .quill-content h3,
+[data-theme="wireframe"] .quill-content h4,
+[data-theme="wireframe"] .quill-content h5,
+[data-theme="wireframe"] .quill-content h6 {
+  color: #1f2937;
+}
+
+[data-theme="black"] .quill-content h1,
+[data-theme="black"] .quill-content h2,
+[data-theme="black"] .quill-content h3,
+[data-theme="black"] .quill-content h4,
+[data-theme="black"] .quill-content h5,
+[data-theme="black"] .quill-content h6 {
+  color: #ffffff;
+}
+
+/* Paragraph styles untuk quill-content */
+.quill-content p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.quill-content p:empty {
+  display: none;
+}
+
+/* Remove empty paragraphs with only <br> */
+.quill-content p:has(br:only-child) {
+  display: none;
+}
+
+/* Text color themes */
+[data-theme="wireframe"] .quill-content {
+  color: rgba(31, 41, 55, 0.8);
+}
+
+[data-theme="black"] .quill-content {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* List styles untuk quill-content */
+.quill-content ul,
+.quill-content ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.quill-content ul {
+  list-style-type: disc;
+}
+
+.quill-content ol {
+  list-style-type: decimal;
+}
+
+.quill-content li {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.6;
+}
+
+.quill-content ul ul,
+.quill-content ol ol,
+.quill-content ul ol,
+.quill-content ol ul {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Nested list styles */
+.quill-content ul ul {
+  list-style-type: circle;
+}
+
+.quill-content ul ul ul {
+  list-style-type: square;
+}
+
+/* Blockquote styles untuk quill-content */
+.quill-content blockquote {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding: 1rem 1.5rem;
+  font-style: italic;
+  position: relative;
+  border-radius: 0 8px 8px 0;
+}
+
+[data-theme="wireframe"] .quill-content blockquote {
+  border-left: 4px solid #3b82f6;
+  color: rgba(31, 41, 55, 0.7);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+[data-theme="black"] .quill-content blockquote {
+  border-left: 4px solid #4f46e5;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(79, 70, 229, 0.1);
+}
+
+/* Code block styles untuk quill-content */
+.quill-content pre {
+  position: relative !important;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding: 3em 60px 1.5em 1.5em !important; /* Extra right padding for copy button */
+  border-radius: 12px !important;
+  overflow-x: auto;
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Monaco, "Cascadia Code",
+    "Roboto Mono", Consolas, "Courier New", monospace;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  font-weight: 400 !important;
+  font-feature-settings: "liga" 1, "calt" 1 !important;
+  font-variant-ligatures: common-ligatures !important;
+}
+
+/* Header untuk quill-content pre */
+.quill-content pre::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 40px !important;
+  border-radius: 12px 12px 0 0 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Traffic Light Dots untuk quill-content */
+.quill-content pre::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 14px !important;
+  left: 14px !important;
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #ff5f57 !important;
+  border-radius: 50% !important;
+  box-shadow: 
+    /* Red dot */ 0 0 0 1px rgba(255, 95, 87, 0.25),
+    /* Yellow dot */ 20px 0 0 0 #ffbd2e, 20px 0 0 1px rgba(255, 189, 46, 0.25),
+    /* Green dot */ 40px 0 0 0 #28ca42, 40px 0 0 1px rgba(40, 202, 66, 0.25),
+    /* Overall shadow */ 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+[data-theme="wireframe"] .quill-content pre {
+  background: #f8fafc;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+}
+
+[data-theme="wireframe"] .quill-content pre::before {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="black"] .quill-content pre {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="black"] .quill-content pre::before {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Syntax highlighting untuk quill-content */
+.quill-content pre code,
+.quill-content .hljs-keyword {
+  color: #569cd6 !important; /* Blue */
+  font-weight: 500 !important;
+}
+
+.quill-content .hljs-string {
+  color: #ce9178 !important; /* Orange */
+}
+
+.quill-content .hljs-number {
+  color: #b5cea8 !important; /* Light Green */
+}
+
+.quill-content .hljs-comment {
+  color: #6a9955 !important; /* Green */
+  font-style: italic !important;
+  opacity: 0.9 !important;
+}
+
+.quill-content .hljs-function {
+  color: #dcdcaa !important; /* Yellow */
+  font-weight: 500 !important;
+}
+
+.quill-content .hljs-variable {
+  color: #4fc1ff !important; /* Light Blue */
+}
+
+.quill-content .hljs-literal,
+.quill-content .hljs-boolean {
+  color: #569cd6 !important; /* Blue */
+  font-weight: 500 !important;
+}
+
+.quill-content .hljs-class {
+  color: #4ec9b0 !important; /* Teal */
+  font-weight: 500 !important;
+}
+
+.quill-content .hljs-operator,
+.quill-content .hljs-punctuation {
+  color: #d4d4d4 !important; /* Light Gray */
+}
+
+/* Light theme adjustments untuk quill-content */
+[data-theme="wireframe"] .quill-content .hljs-keyword {
+  color: #d73a49 !important; /* Red for keywords */
+}
+
+[data-theme="wireframe"] .quill-content .hljs-string {
+  color: #032f62 !important; /* Dark Blue for strings */
+}
+
+[data-theme="wireframe"] .quill-content .hljs-comment {
+  color: #6a737d !important; /* Gray for comments */
+}
+
+[data-theme="wireframe"] .quill-content .hljs-function {
+  color: #6f42c1 !important; /* Purple for functions */
+}
+
+[data-theme="wireframe"] .quill-content .hljs-variable {
+  color: #e36209 !important; /* Orange for variables */
+}
+
+[data-theme="wireframe"] .quill-content .hljs-number {
+  color: #005cc5 !important; /* Blue for numbers */
+}
+
+/* ========================================
+           CRITICAL FIX: TEXT ALIGNMENT FOR QUILL
+           ======================================== */
+.ql-align-center {
+  text-align: center;
+}
+.ql-align-right {
+  text-align: right;
+}
+.ql-align-left {
+  text-align: left;
+}
+
+/* tooltip */
+/* Hide the size display tooltip */
+.ql-resize-display {
+  display: none !important;
+}
+
+/* Hide the alignment tooltip */
+.ql-image-resize .ql-tooltip {
+  display: none !important;
+}
+
+/* Ensure hiding applies across all themes, with specific emphasis on black theme */
+[data-theme="black"] .ql-resize-display {
+  display: none !important;
+}
+
+[data-theme="black"] .ql-image-resize .ql-tooltip {
+  display: none !important;
+}
+/* Hilangkan background hitam dari tombol resize Quill */
+/* --- Hilangkan background hitam di tiap tombol tooltip resizer (@botom/quill-resize-module) --- */
+.ql-resize-tooltip {
+  /* atur container tooltip (bebas: bisa transparan/putih) */
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid rgba(59, 130, 246, 0.4) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* hapus latar hitam di SEMUA item di dalam tooltip */
+.ql-resize-tooltip * {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* khusus elemen tombol/aksi di tooltip */
+.ql-resize-tooltip button,
+.ql-resize-tooltip [role="button"],
+.ql-resize-tooltip .ql-resize-tooltip-item,
+.ql-resize-tooltip .ql-tooltip-item {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 2px 6px !important;
+  color: inherit !important;
+}
+
+/* jaga-jaga kalau ada pseudo-element */
+.ql-resize-tooltip button::before,
+.ql-resize-tooltip button::after {
+  background: transparent !important;
+}
+
+/* ========================================
+   CUSTOM ALIGN TOOLTIP (STYLE SAMA DENGAN TOOLBAR)
+   ======================================== */
+
+/* ========================================
+   CUSTOM ALIGN TOOLTIP (SAMA DENGAN TOOLBAR)
+   ======================================== */
+/* ========================================
+   CUSTOM ALIGN BUTTONS
+   ======================================== */
+/* reset content -> pakai SVG sebagai background icon */
+
+.custom-quill .ql-toolbar button.ql-alignLeft::before,
+.custom-quill .ql-toolbar button.ql-alignCenter::before,
+.custom-quill .ql-toolbar button.ql-alignRight::before {
+  content: "" !important;
+  display: block !important;
+  width: 18px !important;
+  height: 18px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 18px 18px !important;
+}
+
+/* ALIGN LEFT (3 lines, left-justified) */
+.custom-quill .ql-toolbar button.ql-alignLeft::before {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3%206h18M3%2012h14M3%2018h10'%20stroke='currentColor'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20fill='none'/%3E%3C/svg%3E");
+}
+
+/* ALIGN CENTER (3 lines, centered) */
+.custom-quill .ql-toolbar button.ql-alignCenter::before {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3%206h18M6%2012h12M8%2018h8'%20stroke='currentColor'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20fill='none'/%3E%3C/svg%3E");
+}
+
+/* ALIGN RIGHT (3 lines, right-justified) */
+.custom-quill .ql-toolbar button.ql-alignRight::before {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3%206h18M7%2012h14M11%2018h10'%20stroke='currentColor'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20fill='none'/%3E%3C/svg%3E");
+}
+/* --- Black Theme SVG --- */
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-alignLeft::before {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 6h18M3 12h14M3 18h10' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+}
+
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-alignCenter::before {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 6h18M6 12h12M8 18h8' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+}
+
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-alignRight::before {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 6h18M7 12h14M11 18h10' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+}
+
+/* hover & active tetap pakai warna tombol */
+[data-theme="black"]
+  .custom-quill
+  .ql-toolbar
+  button.ql-alignLeft:hover::before,
+[data-theme="black"]
+  .custom-quill
+  .ql-toolbar
+  button.ql-alignCenter:hover::before,
+[data-theme="black"]
+  .custom-quill
+  .ql-toolbar
+  button.ql-alignRight:hover::before,
+[data-theme="black"]
+  .custom-quill
+  .ql-toolbar
+  button.ql-alignLeft.ql-active::before,
+[data-theme="black"]
+  .custom-quill
+  .ql-toolbar
+  button.ql-alignCenter.ql-active::before,
+[data-theme="black"]
+  .custom-quill
+  .ql-toolbar
+  button.ql-alignRight.ql-active::before {
+  filter: invert(29%) sepia(92%) saturate(2775%) hue-rotate(240deg)
+    brightness(95%) contrast(97%);
+}
+
+/* pastikan ukuran & alignment sama seperti button icon lain */
+.custom-quill .ql-toolbar button.ql-alignLeft,
+.custom-quill .ql-toolbar button.ql-alignCenter,
+.custom-quill .ql-toolbar button.ql-alignRight {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Wireframe --- */
+[data-theme="wireframe"] .custom-quill .ql-toolbar button.ql-alignLeft,
+[data-theme="wireframe"] .custom-quill .ql-toolbar button.ql-alignCenter,
+[data-theme="wireframe"] .custom-quill .ql-toolbar button.ql-alignRight {
+  color: rgba(31, 41, 55, 0.8) !important;
+}
+
+[data-theme="wireframe"] .custom-quill .ql-toolbar button.ql-alignLeft:hover,
+[data-theme="wireframe"] .custom-quill .ql-toolbar button.ql-alignCenter:hover,
+[data-theme="wireframe"] .custom-quill .ql-toolbar button.ql-alignRight:hover {
+  color: #3b82f6 !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+}
+
+[data-theme="wireframe"]
+  .custom-quill
+  .ql-toolbar
+  button.ql-alignLeft.ql-active,
+[data-theme="wireframe"]
+  .custom-quill
+  .ql-toolbar
+  button.ql-alignCenter.ql-active,
+[data-theme="wireframe"]
+  .custom-quill
+  .ql-toolbar
+  button.ql-alignRight.ql-active {
+  color: #3b82f6 !important;
+  background: rgba(59, 130, 246, 0.15) !important;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* --- Dark --- */
+[data-theme="dark"] .custom-quill .ql-toolbar button.ql-alignLeft,
+[data-theme="dark"] .custom-quill .ql-toolbar button.ql-alignCenter,
+[data-theme="dark"] .custom-quill .ql-toolbar button.ql-alignRight,
+.dark .custom-quill .ql-toolbar button.ql-alignLeft,
+.dark .custom-quill .ql-toolbar button.ql-alignCenter,
+.dark .custom-quill .ql-toolbar button.ql-alignRight {
+  color: rgba(249, 250, 251, 0.8) !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-toolbar button.ql-alignLeft:hover,
+[data-theme="dark"] .custom-quill .ql-toolbar button.ql-alignCenter:hover,
+[data-theme="dark"] .custom-quill .ql-toolbar button.ql-alignRight:hover,
+.dark .custom-quill .ql-toolbar button.ql-alignLeft:hover,
+.dark .custom-quill .ql-toolbar button.ql-alignCenter:hover,
+.dark .custom-quill .ql-toolbar button.ql-alignRight:hover {
+  color: #60a5fa !important;
+  background: rgba(96, 165, 250, 0.1) !important;
+}
+
+[data-theme="dark"] .custom-quill .ql-toolbar button.ql-alignLeft.ql-active,
+[data-theme="dark"] .custom-quill .ql-toolbar button.ql-alignCenter.ql-active,
+[data-theme="dark"] .custom-quill .ql-toolbar button.ql-alignRight.ql-active,
+.dark .custom-quill .ql-toolbar button.ql-alignLeft.ql-active,
+.dark .custom-quill .ql-toolbar button.ql-alignCenter.ql-active,
+.dark .custom-quill .ql-toolbar button.ql-alignRight.ql-active {
+  color: #60a5fa !important;
+  background: rgba(96, 165, 250, 0.15) !important;
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+/* --- Black --- */
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-alignLeft,
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-alignCenter,
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-alignRight {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-alignLeft:hover,
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-alignCenter:hover,
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-alignRight:hover {
+  color: #4f46e5 !important;
+  background: rgba(79, 70, 229, 0.1) !important;
+}
+
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-alignLeft.ql-active,
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-alignCenter.ql-active,
+[data-theme="black"] .custom-quill .ql-toolbar button.ql-alignRight.ql-active {
+  color: #4f46e5 !important;
+  background: rgba(79, 70, 229, 0.15) !important;
+  border-color: rgba(79, 70, 229, 0.3);
+}

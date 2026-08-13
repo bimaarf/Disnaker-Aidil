@@ -1,0 +1,171 @@
+/* From Uiverse.io by 3bdel3ziz-T, modified for themes and size */
+:root {
+  --transition: 350ms;
+  --folder-W: 90px; /* Dikurangi dari 120px */
+  --folder-H: 60px; /* Dikurangi dari 80px */
+
+  /* Light mode colors */
+  --container-bg-light: linear-gradient(135deg, #6dd5ed, #2193b0);
+  --tip-bg-light: linear-gradient(135deg, #ff9a56, #ff6f56);
+  --cover-bg-light: linear-gradient(135deg, #ffe563, #ffc663);
+  --text-color-light: #ffffff;
+  --button-bg-light: rgba(255, 255, 255, 0.2);
+  --button-hover-light: rgba(255, 255, 255, 0.4);
+  --shadow-light: rgba(0, 0, 0, 0.2);
+
+  /* Dark mode colors */
+  --container-bg-dark: linear-gradient(135deg, #2c3e50, #1a252f);
+  --tip-bg-dark: linear-gradient(135deg, #e74c3c, #c0392b);
+  --cover-bg-dark: linear-gradient(135deg, #f1c40f, #e67e22);
+  --text-color-dark: #e0e0e0;
+  --button-bg-dark: rgba(255, 255, 255, 0.1);
+  --button-hover-dark: rgba(255, 255, 255, 0.3);
+  --shadow-dark: rgba(0, 0, 0, 0.5);
+}
+
+/* Default ke light mode */
+.container-folder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px; /* Dikurangi dari 10px */
+  background: var(--container-bg-light);
+  border-radius: 12px; /* Dikurangi dari 15px */
+  box-shadow: 0 10px 20px var(--shadow-light); /* Dikurangi dari 15px 30px */
+  height: calc(var(--folder-H) * 1.7);
+  position: relative;
+  transition: background var(--transition) ease;
+}
+
+/* Dark mode */
+.dark .container-folder {
+  background: var(--container-bg-dark);
+  box-shadow: 0 10px 20px var(--shadow-dark);
+}
+
+.folder {
+  position: absolute;
+  top: -15px; /* Dikurangi dari -20px */
+  left: calc(50% - calc(var(--folder-W) / 2));
+  animation: float 2.5s infinite ease-in-out;
+  transition: transform var(--transition) ease;
+}
+
+.folder:hover {
+  transform: scale(1.05);
+}
+
+.folder .front-side,
+.folder .back-side {
+  position: absolute;
+  transition: transform var(--transition);
+  transform-origin: bottom center;
+}
+
+.folder .back-side::before,
+.folder .back-side::after {
+  content: "";
+  display: block;
+  background-color: white;
+  opacity: 0.5;
+  width: var(--folder-W);
+  height: var(--folder-H);
+  position: absolute;
+  transform-origin: bottom center;
+  border-radius: 10px; /* Dikurangi dari 15px */
+  transition: transform var(--transition);
+  z-index: 0;
+}
+
+.container-folder:hover .back-side::before {
+  transform: rotateX(-5deg) skewX(5deg);
+}
+.container-folder:hover .back-side::after {
+  transform: rotateX(-15deg) skewX(12deg);
+}
+
+.folder .front-side {
+  z-index: 1;
+}
+
+.container-folder:hover .front-side {
+  transform: rotateX(-40deg) skewX(15deg);
+}
+
+.folder .tip {
+  background: var(--tip-bg-light);
+  width: 60px; /* Dikurangi dari 80px */
+  height: 15px; /* Dikurangi dari 20px */
+  border-radius: 10px 10px 0 0; /* Dikurangi dari 12px */
+  box-shadow: 0 3px 10px var(--shadow-light); /* Dikurangi dari 5px 15px */
+  position: absolute;
+  top: -8px; /* Dikurangi dari -10px */
+  z-index: 2;
+  transition: background var(--transition) ease;
+}
+
+.dark .folder .tip {
+  background: var(--tip-bg-dark);
+  box-shadow: 0 3px 10px var(--shadow-dark);
+}
+
+.folder .cover {
+  background: var(--cover-bg-light);
+  width: var(--folder-W);
+  height: var(--folder-H);
+  box-shadow: 0 10px 20px var(--shadow-light); /* Dikurangi dari 15px 30px */
+  border-radius: 8px; /* Dikurangi dari 10px */
+  transition: background var(--transition) ease;
+}
+
+.dark .folder .cover {
+  background: var(--cover-bg-dark);
+  box-shadow: 0 10px 20px var(--shadow-dark);
+}
+
+.custom-file-upload {
+  font-size: 0.9em; /* Dikurangi dari 1.1em */
+  color: var(--text-color-light);
+  text-align: center;
+  background: var(--button-bg-light);
+  border: none;
+  border-radius: 8px; /* Dikurangi dari 10px */
+  box-shadow: 0 5px 15px var(--shadow-light); /* Dikurangi dari 10px 20px */
+  cursor: pointer;
+  transition: background var(--transition) ease, color var(--transition) ease;
+  display: inline-block;
+  width: 100%;
+  padding: 8px 25px; /* Dikurangi dari 10px 35px */
+  position: relative;
+}
+
+.dark .custom-file-upload {
+  color: var(--text-color-dark);
+  background: var(--button-bg-dark);
+  box-shadow: 0 5px 15px var(--shadow-dark);
+}
+
+.custom-file-upload:hover {
+  background: var(--button-hover-light);
+}
+
+.dark .custom-file-upload:hover {
+  background: var(--button-hover-dark);
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px); /* Dikurangi dari -20px */
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
